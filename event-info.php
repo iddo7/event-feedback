@@ -10,6 +10,19 @@
 </head>
 <body>
 
+<div class="container-fluid">
+    <div class="row custom-margin">
+        <div class="img-container">
+            <img src="https://riotfest.org/wp-content/uploads/2016/10/151_1stuffed_crust_pizza.jpg" alt="Image de pizza">
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

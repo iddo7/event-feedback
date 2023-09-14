@@ -1,2 +1,15 @@
-/* */
+.custom-margin {
+    margin: 40px;
+}
+
+.img-container {
+    height: 100%;
+    width: 50%;
+    overflow: hidden;
+}
+
+.img-container img {
+    width: 200%;
+}
+
 
