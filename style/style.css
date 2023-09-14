@@ -1,2 +1,48 @@
 /* */
 
+:root {
+    --bs-body-font-family: 'Open Sans', sans-serif;
+    --text: #141012;
+    --background: #f2eef0;
+    --primary: #eead53;
+    --secondary: #e0d7dc;
+    --accent: #383247;
+}
+
+body {
+    background-color: var(--background);
+}
+
+h1 {
+    font-size: 5rem;
+    font-weight: bold;
+}
+h2 {
+    font-size: 3.8rem;
+    font-weight: bold;
+}
+h3 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+h4 {
+    font-size: 2rem;
+    font-weight: medium;
+}
+h5 {
+    font-size: 2rem;
+    font-weight: medium;
+}
+
+p {
+    font-size: 1.3rem;
+}
+
+
+.card {
+    background-color: var(--secondary);
+}
+
+button {
+    background-color: var(--accent);
+}
