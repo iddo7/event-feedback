@@ -12,4 +12,12 @@
     width: 200%;
 }
 
+.height100 {
+    height: 100%;
+    viewport-fit: 100%;
+}
+
+.card {
+    padding: 2rem;
+}
 
