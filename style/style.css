@@ -1,2 +1,15 @@
 /* */
 
+.event-card {
+    margin: 2rem 0 2rem 0;
+}
+
+.event-card-title {
+    padding: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
