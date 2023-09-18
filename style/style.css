@@ -5,7 +5,7 @@
     --text: #141012;
     --background: #f2eef0;
     --primary: #eead53;
-    --secondary: #e0d7dc;
+    --secondary: #e6e0e3;
     --accent: #383247;
 }
 
@@ -14,28 +14,28 @@ body {
 }
 
 h1 {
-    font-size: 5rem;
+    font-size: 96px;
     font-weight: bold;
 }
 h2 {
-    font-size: 3.8rem;
+    font-size: 60px;
     font-weight: bold;
 }
 h3 {
-    font-size: 3rem;
+    font-size: 48px;
     font-weight: bold;
 }
 h4 {
-    font-size: 2rem;
+    font-size: 34px;
     font-weight: medium;
 }
 h5 {
-    font-size: 2rem;
+    font-size: 24px;
     font-weight: medium;
 }
 
 p {
-    font-size: 1.3rem;
+    font-size: 16px;
 }
 
 
@@ -43,6 +43,6 @@ p {
     background-color: var(--secondary);
 }
 
-button {
-    background-color: var(--accent);
+.btn {
+    font-size: 14px;
 }
