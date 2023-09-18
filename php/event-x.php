@@ -12,7 +12,7 @@
 <body>
 
 <div class="container">
-    <div class="row text-center cercle">
+    <div class="row text-center cercle-x d-flex justify-content-center">
         <div class="col-md-4">
             <i class="fa-solid fa-circle" style="color: #59eb24;"></i>
         </div>
