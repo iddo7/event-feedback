@@ -46,7 +46,7 @@
                             <div>
                                 <h3 class="event-card-title"><?php echo $row["name"] ?></h3>
                                 <ul class="event-card-list">
-                                    <li class="event-card-item"><?php echo $row["dateStart"] ?></li>
+                                    <li class="event-card-item"><?php echo $row["date"] ?></li>
                                     <li class="event-card-item"><?php echo $row["departementId"] ?></li>
                                 </ul>
                             </div>
