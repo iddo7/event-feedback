@@ -1,4 +1,34 @@
-/* */
+.custom-margin {
+    margin: 40px;
+}
+
+.img-container {
+    height: 100%;
+    width: 50%;
+    overflow: hidden;
+}
+
+.img-container img {
+    width: 200%;
+}
+
+.height100 {
+    height: 100%;
+    viewport-fit: 100%;
+}
+
+.card {
+    padding: 2rem;
+}
+
+.cercle {
+    font-size: 130px;
+}
+
+.custom-margin-2 {
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
 
 :root {
     --bs-body-font-family: 'Open Sans', sans-serif;
