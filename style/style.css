@@ -1,35 +1,3 @@
-.custom-margin {
-    margin: 40px;
-}
-
-.img-container {
-    height: 100%;
-    width: 50%;
-    overflow: hidden;
-}
-
-.img-container img {
-    width: 200%;
-}
-
-.height100 {
-    height: 100%;
-    viewport-fit: 100%;
-}
-
-.card {
-    padding: 2rem;
-}
-
-.cercle {
-    font-size: 130px;
-}
-
-.custom-margin-2 {
-    margin-top: 50px;
-    margin-bottom: 100px;
-}
-
 :root {
     --bs-body-font-family: 'Open Sans', sans-serif;
     --text: #141012;
@@ -39,34 +7,41 @@
     --accent: #383247;
 }
 
+html {font-size: 100%;} /*16px*/
+
 body {
-    background-color: var(--background);
+  background: var(--background);
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.75;
+  color: #000000;
+}
+
+p {margin-bottom: 1rem;}
+
+h1, h2, h3, h4, h5 {
+  margin: 3rem 0 1.38rem;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  line-height: 1.3;
 }
 
 h1 {
-    font-size: 96px;
-    font-weight: bold;
-}
-h2 {
-    font-size: 60px;
-    font-weight: bold;
-}
-h3 {
-    font-size: 48px;
-    font-weight: bold;
-}
-h4 {
-    font-size: 34px;
-    font-weight: medium;
-}
-h5 {
-    font-size: 24px;
-    font-weight: medium;
+  margin-top: 0;
+  font-size: 1.8rem;
 }
 
-p {
-    font-size: 16px;
-}
+h2 {font-size: 2.074rem;}
+
+h3 {font-size: 1.728rem;}
+
+/*
+h4 {font-size: 1.44rem;}
+
+h5 {font-size: 1.2rem;}
+*/
+
+small, .text_small {font-size: 0.833rem;}
 
 h5 span {
     font-size: 20px;
@@ -108,4 +83,37 @@ ul {
 
 .card hr {
     margin-bottom: 1.5rem;
+}
+
+
+.custom-margin {
+    margin: 40px;
+}
+
+.img-container {
+    height: 100%;
+    width: 50%;
+    overflow: hidden;
+}
+
+.img-container img {
+    width: 200%;
+}
+
+.height100 {
+    height: 100%;
+    viewport-fit: 100%;
+}
+
+.card {
+    padding: 2rem;
+}
+
+.cercle {
+    font-size: 130px;
+}
+
+.custom-margin-2 {
+    margin-top: 50px;
+    margin-bottom: 100px;
 }
