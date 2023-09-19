@@ -1,0 +1,22 @@
+// Modifying Bootstrap's default colors
+
+
+$blue: #1a6eec;
+$grey: #a9aabc;
+$dark-purple: #444655;
+$green: #008a64;
+$yellow: #ffc45d;
+$red: #df2350;
+
+$primary: $blue;
+$secondary: $grey;
+$dark: $dark-purple;
+$success: $green;
+$warning: $yellow;
+$danger: $red;
+
+
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+
