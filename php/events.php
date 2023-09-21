@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style/scss/compiled-variables.css">
     <link rel="stylesheet" href="../style/style.css">
-    <title>Events</title>
+    <title>Event Feedback</title>
 </head>
 <?php 
 // if ($_SESSION["connexion"] == true) {
@@ -38,20 +38,22 @@
             while($row = $result->fetch_assoc()) {
                 ?>
                 <div class="event-card card">
-                    <div class="row">
-                        <div class="col-3">
-                            <img class="event-card-img img-fluid" src="<?php echo $row["img"] ?>">
-                        </div>
-                        <div class="col-9 d-flex align-items-center">
-                            <div>
-                                <h3 class="event-card-title"><?php echo $row["name"] ?></h3>
-                                <ul class="event-card-list">
-                                    <li class="event-card-item"><?php echo $row["date"] ?></li>
-                                    <li class="event-card-item"><?php echo $row["departementId"] ?></li>
-                                </ul>
+                    <a href="event-info.php?id=<?php echo $row["id"] ?>">
+                        <div class="row">
+                            <div class="col-3">
+                                <img class="event-card-img img-fluid" src="<?php echo $row["img"] ?>">
+                            </div>
+                            <div class="col-9 d-flex align-items-center">
+                                <div>
+                                    <h3 class="event-card-title"><?php echo $row["name"] ?></h3>
+                                    <ul class="event-card-list">
+                                        <li class="event-card-item"><?php echo $row["date"] ?></li>
+                                        <li class="event-card-item"><?php echo $row["departementId"] ?></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <?php
             }
