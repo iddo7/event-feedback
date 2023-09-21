@@ -14,6 +14,8 @@ session_start();
     <title>Event Feedback</title>
 </head>
 <?php 
+if ($_SESSION["connexion"] == true) {
+    
     $valuesInputed = array(
         "username" => "",
         "password" => "",
@@ -103,6 +105,13 @@ session_start();
             </div>
         </div>
     </div>
+<?php 
+}
+else {
+    header("Location: login.php");
+    exit;
+}
+?>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
