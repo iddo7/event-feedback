@@ -37,10 +37,13 @@
                 while($row = $result->fetch_assoc()) {
                     $valuesInputed = array(
                         "name" => $row["name"],
-                        "artistName" => $row["artiste"],
-                        "image" => $row["img"],
-                        "numberOfSongs" => $row["nmbDePistes"],
-                        "releaseDate" => $row["dateDeSortie"],
+                        "date" => $row["date"],
+                        "description" => $row["description"],
+                        "img" => $row["img"],
+                        "departementId" => $row["departementId"],
+                        "votesGreen" => $row["votesGreen"],
+                        "votesYellow" => $row["votesYellow"],
+                        "votesRed" => $row["votesRed"],
                     );
                 }
 
@@ -49,31 +52,31 @@
         ?>
             <div class="col-md-6 height100">
                 <div class="card border-0 height100">
-                    <img class="card-img-top height100" src="https://riotfest.org/wp-content/uploads/2016/10/151_1stuffed_crust_pizza.jpg" alt="Card image cap">
+                    <img class="card-img-top height100" src="<?php echo $valuesInputed["img"] ?>" alt="Card image cap">
                 </div>
             </div>
             <div class="col-md-6 height100 d-flex align-items-center">
                 <div class="card border-0 mx-auto">
-                    <div class="card-body text-center">
-                        <h5 class="card-title text-center display-3 mb-5"><?php echo $row["name"] ?></h5>
-                        <p class="card-text m-5" style="font-size: 2rem;">Date: </p>
-                        <p class="card-text m-5" style="font-size: 2rem;">Infos: </p>
+                    <div class="card-body">
+                        <h1 class="card-title display-3"><?php echo $valuesInputed["name"] ?></h1>
+                        <p class="card-text" style="font-size: 2rem;"><?php echo $valuesInputed["date"] ?></p>
+                        <p class="card-text" style="font-size: 2rem;"><?php echo $valuesInputed["description"] ?></p>
                         <div class="row">
                             <div class="col-md-4 cercle">
                                 <i class="fa-solid fa-circle" style="color: #59eb24;"></i>
-                                <h2 class="display-5">1</h2>                                              
+                                <h2 class="display-5"><?php echo $valuesInputed["votesGreen"] ?></h2>                                              
                             </div>
                             <div class="col-md-4 cercle">
                                 <i class="fa-solid fa-circle" style="color: #59eb24;"></i>
-                                <h2 class="display-5">2</h2>                                              
+                                <h2 class="display-5"><?php echo $valuesInputed["votesYellow"] ?></h2>                                              
                             </div>
                             <div class="col-md-4 cercle">
                                 <i class="fa-solid fa-circle" style="color: #59eb24;"></i>  
-                                <h2 class="display-5">3</h2>                      
+                                <h2 class="display-5"><?php echo $valuesInputed["votesRed"] ?></h2>                      
                             </div>
                         </div>
                         <div class="d-flex justify-content-center m-5">
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <a href="#" class="btn btn-primary">Voter</a>
                         </div>
                     </div>
                 </div>
