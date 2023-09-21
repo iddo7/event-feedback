@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +14,11 @@
     <title>event-info</title>
 </head>
 <body>
+
+<?php 
+if ($_SESSION["connexion"] == true) {
+
+?>
 
 <div class="container-fluid screen-center-y">
     <div class="row text-center cercle-x">
@@ -31,6 +40,13 @@
     <span class="">vote étudiant</span>
 </div>
 
+<?php 
+}
+else {
+    header("Location: login.php");
+    exit;
+}
+?>
 
 
 
