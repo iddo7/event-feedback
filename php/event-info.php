@@ -41,9 +41,9 @@
                         "description" => $row["description"],
                         "img" => $row["img"],
                         "departementId" => $row["departementId"],
-                        "votesGreen" => $row["votesGreen"],
-                        "votesYellow" => $row["votesYellow"],
-                        "votesRed" => $row["votesRed"],
+                        "studentVotesGreen" => $row["studentVotesGreen"],
+                        "studentVotesYellow" => $row["studentVotesYellow"],
+                        "studentVotesRed" => $row["studentVotesRed"],
                     );
                 }
 
@@ -55,24 +55,24 @@
                     <img class="card-img-top height100" src="<?php echo $valuesInputed["img"] ?>" alt="Card image cap">
                 </div>
             </div>
-            <div class="col-md-6 height100 d-flex align-items-center">
+            <div class="col-md-6 d-flex align-items-center">
                 <div class="card border-0 mx-auto">
                     <div class="card-body">
                         <h1 class="card-title display-3"><?php echo $valuesInputed["name"] ?></h1>
-                        <p class="card-text" style="font-size: 2rem;"><?php echo $valuesInputed["date"] ?></p>
-                        <p class="card-text" style="font-size: 2rem;"><?php echo $valuesInputed["description"] ?></p>
+                        <p class="card-text"><?php echo $valuesInputed["date"] ?></p>
+                        <p class="card-text"><?php echo $valuesInputed["description"] ?></p>
                         <div class="row">
                             <div class="col-md-4 cercle">
                                 <i class="fa-solid fa-circle" style="color: #59eb24;"></i>
-                                <h2 class="display-5"><?php echo $valuesInputed["votesGreen"] ?></h2>                                              
+                                <h2 class="display-5"><?php echo $valuesInputed["studentVotesGreen"] ?></h2>                                              
                             </div>
                             <div class="col-md-4 cercle">
                                 <i class="fa-solid fa-circle" style="color: #59eb24;"></i>
-                                <h2 class="display-5"><?php echo $valuesInputed["votesYellow"] ?></h2>                                              
+                                <h2 class="display-5"><?php echo $valuesInputed["studentVotesYellow"] ?></h2>                                              
                             </div>
                             <div class="col-md-4 cercle">
                                 <i class="fa-solid fa-circle" style="color: #59eb24;"></i>  
-                                <h2 class="display-5"><?php echo $valuesInputed["votesRed"] ?></h2>                      
+                                <h2 class="display-5"><?php echo $valuesInputed["studentVotesRed"] ?></h2>                      
                             </div>
                         </div>
                         <div class="d-flex justify-content-center m-5">
