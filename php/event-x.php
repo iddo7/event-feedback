@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<div class="container-fluid screen-center">
+<div class="container-fluid screen-center-y">
     <div class="row text-center cercle-x">
         <div class="col-sm-4 col-md-4">
             <i class="fa-solid fa-circle img-fluid" style="color: #008a64;"></i>
