@@ -3,7 +3,6 @@
     --background: #f4f4f4;
 }
 
-
 h5 span {
     font-size: 20px;
 }
@@ -50,16 +49,6 @@ a:hover {
     .cercle-x {
         font-size: 16vh;
     }
-}
-
-
-:root {
-    --bs-body-font-family: 'Open Sans', sans-serif;
-    --text: #141012;
-    --background: #f2eef0;
-    --primary: #eead53;
-    --secondary: #e6e0e3;
-    --accent: #383247;
 }
 
 .event-card {
