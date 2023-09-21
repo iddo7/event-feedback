@@ -11,19 +11,29 @@
 </head>
 <body>
 
-<div class="container">
-    <div class="row text-center cercle-x d-flex justify-content-center">
-        <div class="col-md-4">
-            <i class="fa-solid fa-circle" style="color: #59eb24;"></i>
+<div class="container-fluid screen-center">
+    <div class="row text-center cercle-x">
+        <div class="col-sm-4 col-md-4">
+            <i class="fa-solid fa-circle img-fluid" style="color: #008a64;"></i>
         </div>
-        <div class="col-md-4">
-            <i class="fa-solid fa-circle" style="color: #59eb24;"></i>
+        <div class="col-sm-4 col-md-4">
+            <i class="fa-solid fa-circle" style="color: #ffc45d;"></i>
         </div>
-        <div class="col-md-4">
-            <i class="fa-solid fa-circle" style="color: #59eb24;"></i>
+        <div class="col-sm-4 col-md-4">
+            <i class="fa-solid fa-circle" style="color: #df2350;"></i>
         </div>
     </div>
 </div>
+<div class="m-5 fleche-retour">
+    <i class="fa-sharp fa-solid fa-arrow-left"></i>
+</div>
+<div class="fixed-bottom text-center mb-4">
+    <span class="">vote étudiant</span>
+</div>
+
+
+
+
 
 
 

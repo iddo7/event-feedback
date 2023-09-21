@@ -26,12 +26,23 @@
 }
 
 .cercle-x {
-    font-size: 350px;
+    font-size: 20vw;
 }
 
 .custom-margin-2 {
     margin-top: 50px;
     margin-bottom: 100px;
+}
+
+.fleche-retour {
+    font-size: 40px;
+}
+
+.screen-center {
+    position: absolute;
+    top: 50%;
+    transform: translate(-0%, -50%);
+    
 }
 
 
