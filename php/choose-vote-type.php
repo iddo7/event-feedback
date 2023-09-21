@@ -9,8 +9,8 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style/scss/compiled-variables.css">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="../style/scss/compiled-variables.css">
+    <link rel="stylesheet" href="../style/style.css">
     <title>Event Feedback</title>
 </head>
 <?php 
@@ -88,17 +88,17 @@ session_start();
     </div>
     <div class="container-fluid screen-center-y">
         <div class="row">
-            <h1 class="choose-title text-center">Accueil</h1>
+            <h1 class="choose-title text-center">Voter</h1>
             <div class="col-6 text-center">
                 <a href="#">
-                    <i class="choose-icon fa-solid fa-user-plus"></i>
-                    <h2>Créer utilisateur</h2>
+                    <i class="choose-icon fa-solid fa-graduation-cap"></i>
+                    <h2>Étudiant</h2>
                 </a>
             </div>
             <div class="col-6 text-center">
                 <a href="#">
-                    <i class="choose-icon fa-solid fa-calendar-days"></i>
-                    <h2>Évènements</h2>
+                    <i class="choose-icon fa-solid fa-user-tie"></i>
+                    <h2>Professionnel</h2>
                 </a>
             </div>
         </div>
