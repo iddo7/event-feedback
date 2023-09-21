@@ -13,7 +13,7 @@ session_start();
     <title>Event Feedback</title>
 </head>
 <?php 
-// if ($_SESSION["connexion"] == true) {
+if ($_SESSION["connexion"] == true) {
     $servername = "localhost";
     $username = "root";
     $password = "root";
@@ -37,11 +37,6 @@ session_start();
     }
 ?>
 <body>
-
-<?php 
-if ($_SESSION["connexion"] == true) {
-
-?>
     <div class="container">  
         <?php 
             while($row = $result->fetch_assoc()) {
