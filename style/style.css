@@ -45,6 +45,12 @@
     
 }
 
+@media screen and (orientation : portrait ){
+    .cercle-x {
+        font-size: 16vh;
+    }
+}
+
 
 :root {
     --bs-body-font-family: 'Open Sans', sans-serif;
