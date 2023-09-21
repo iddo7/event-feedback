@@ -38,20 +38,22 @@
             while($row = $result->fetch_assoc()) {
                 ?>
                 <div class="event-card card">
-                    <div class="row">
-                        <div class="col-3">
-                            <img class="event-card-img img-fluid" src="<?php echo $row["img"] ?>">
-                        </div>
-                        <div class="col-9 d-flex align-items-center">
-                            <div>
-                                <h3 class="event-card-title"><?php echo $row["name"] ?></h3>
-                                <ul class="event-card-list">
-                                    <li class="event-card-item"><?php echo $row["date"] ?></li>
-                                    <li class="event-card-item"><?php echo $row["departementId"] ?></li>
-                                </ul>
+                    <a href="event-info.php?id=<?php echo $row["id"] ?>">
+                        <div class="row">
+                            <div class="col-3">
+                                <img class="event-card-img img-fluid" src="<?php echo $row["img"] ?>">
+                            </div>
+                            <div class="col-9 d-flex align-items-center">
+                                <div>
+                                    <h3 class="event-card-title"><?php echo $row["name"] ?></h3>
+                                    <ul class="event-card-list">
+                                        <li class="event-card-item"><?php echo $row["date"] ?></li>
+                                        <li class="event-card-item"><?php echo $row["departementId"] ?></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <?php
             }
