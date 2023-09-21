@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style/scss/compiled-variables.css">
     <link rel="stylesheet" href="style/style.css">
-    <title>Test Style</title>
+    <title>Event Feedback</title>
 </head>
 <body>
     <div class="container-fluid">
@@ -15,7 +15,6 @@
                 <h1>Title H1</h1>
                 <h2>Title H2</h2>
                 <h3>Title H3</h3>
-                <h5>Title H5</h5>
 
                 <p>Paragraph lorem ipsum asodkas oas avpo ari.</p>
 

@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style/scss/compiled-variables.css">
     <link rel="stylesheet" href="../style/style.css">
-    <title>Login</title>
+    <title>Event Feedback</title>
 </head>
 <?php 
     $valuesInputed = array(
@@ -96,10 +96,16 @@
     }
 ?>
 <body>
-    <div class="card p-4 screen-center col-md-3">
-        <h4 class="card-title text-center">Event Feedback</h4>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center mt-5">
+                <span class="logo">Event Feedback</span>
+            </div>
+        </div>
+    </div>
+    <div class="p-4 screen-center col-12 col-md-6 col-xl-3">
+        <h1 class="text-center">Connexion</h1>
         <hr>
-        <h5 class="text-center"><span>Connexion</span></h5>
 
         <?php 
             if ($_SERVER['REQUEST_METHOD'] != 'POST' || $errorOccured == true) {
