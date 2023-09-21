@@ -26,12 +26,49 @@ a:hover {
     font-size: 14px;
 }
 
+.cercle-x {
+    font-size: 20vw;
+}
+
+.custom-margin-2 {
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+.fleche-retour {
+    font-size: 40px;
+}
+
+.screen-center-y {
+    position: absolute;
+    top: 50%;
+    transform: translate(-0%, -50%);
+    
+}
+
+@media screen and (orientation : portrait ){
+    .cercle-x {
+        font-size: 16vh;
+    }
+}
+
+
+:root {
+    --bs-body-font-family: 'Open Sans', sans-serif;
+    --text: #141012;
+    --background: #f2eef0;
+    --primary: #eead53;
+    --secondary: #e6e0e3;
+    --accent: #383247;
+}
+
 .event-card {
     margin: 2rem 0 2rem 0;
 }
 
 .event-card-title {
     padding: 0;
+
 }
 
 ul {
