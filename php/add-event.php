@@ -14,8 +14,11 @@ session_start();
 </head>
 <?php 
     $valuesInputed = array(
-        "username" => "",
-        "password" => "",
+        "name" => "",
+        "date" => "",
+        "description" => "",
+        "img" => "",
+        "department" => "",
     );
     $errorOccured = false;
     $alertMessage = '';
@@ -24,7 +27,7 @@ session_start();
     // FORM WAS SUBMITTED
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        $inputs = array("username", "password");
+        $inputs = array("name", "date", "description", "img", "department");
 
         if (anyIsEmpty($inputs)) {
             $errorOccured = true;
@@ -36,43 +39,13 @@ session_start();
             $valuesInputed[$keys[$i]] = trojan($_POST[$inputs[$i]]);
         }
 
-        if (!$errorOccured) {
-            $username = $_POST['username'];
-            $password = md5($_POST['password'], false);            
+        if (!$errorOccured) {      
 
             $servername = "localhost";
             $usernameDB = "root";
             $passwordDB = "root";
             $db = "event_feedback";
 
-            // Create connection
-            $connection = new mysqli($servername, $usernameDB, $passwordDB, $db);
-            // Check connection
-            if ($connection->connect_error) {
-                die("Connection failed: " . $connection->connect_error);
-            }
-
-            $selectUserQuery = "SELECT * FROM users WHERE email='$username' AND password='$password'";
-            $result = $connection->query($selectUserQuery);
-            
-            if (!empty($result)) {
-                if ($result->num_rows > 0) {
-                    // Connected
-                    $row = $result->fetch_assoc();
-                    $_SESSION["connexion"] = true;
-                    
-                    header("Location: ../index.php");
-                    exit;
-                }
-                else {
-                    $errorOccured = true;
-                    $alertMessage = "Le nom d'usager et le mot de passe ne correspondent pas.";
-                }
-            }
-            else {
-                $errorOccured = true;
-                $alertMessage = "Le nom d'usager et le mot de passe ne correspondent pas.";
-            }
 
         $connection->close();
         }
@@ -116,20 +89,20 @@ session_start();
         ?>
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" class="">
 
-                    <input type="text" class="form-control mb-3" name="username" id="username" placeholder="Nom de l'évènement" 
-                        value="<?php echo $valuesInputed['username']; ?>">
+                    <input type="text" class="form-control mb-3" name="name" id="name" placeholder="Nom de l'évènement" 
+                        value="<?php echo $valuesInputed['name']; ?>">
 
                     <input type="date" class="form-control mb-3" name="date" id="date" placeholder="" 
-                    value="<?php echo $valuesInputed['username']; ?>">
+                    value="<?php echo $valuesInputed['date']; ?>">
 
-                    <input type="text" class="form-control mb-3" name="url" id="url" placeholder="URL de l'image" 
-                    value="<?php echo $valuesInputed['username']; ?>">
+                    <input type="text" class="form-control mb-3" name="img" id="img" placeholder="URL de l'image" 
+                    value="<?php echo $valuesInputed['img']; ?>">
 
-                    <input type="text" class="form-control mb-3" name="departement" id="departement" placeholder="Département" 
-                        value="<?php echo $valuesInputed['password']; ?>">
+                    <input type="text" class="form-control mb-3" name="department" id="department" placeholder="Département" 
+                        value="<?php echo $valuesInputed['department']; ?>">
 
-                    <textarea class="form-control mb-3" name="password" id="password" 
-                    placeholder="Description" rows="4" style="max-height: 200px;" maxlength="500"><?php echo $valuesInputed['password']; ?></textarea>
+                    <textarea class="form-control mb-3" name="description" id="description" 
+                    placeholder="Description" rows="4" style="max-height: 200px;" maxlength="500"><?php echo $valuesInputed['description']; ?></textarea>
 
 
                     <p class="text-<?php echo $errorOccured == true ? "danger" : "success" ?>">
