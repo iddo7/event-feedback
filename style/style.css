@@ -130,3 +130,12 @@ ul {
 .choose-title {
     margin-bottom: 6rem;
 }
+
+.event-info-img {
+    background-size: cover!important;
+}
+
+.event-info-details {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
