@@ -119,23 +119,24 @@ session_start();
                     <input type="text" class="form-control mb-3" name="username" id="username" placeholder="Nom de l'évènement" 
                         value="<?php echo $valuesInputed['username']; ?>">
 
-                    <input type="date" class="form-control mb-3" name="username" id="username" placeholder="Nom d'usager" 
+                    <input type="date" class="form-control mb-3" name="date" id="date" placeholder="" 
                     value="<?php echo $valuesInputed['username']; ?>">
 
-                    <input type="text" class="form-control mb-3" name="username" id="username" placeholder="URL de l'image" 
+                    <input type="text" class="form-control mb-3" name="url" id="url" placeholder="URL de l'image" 
                     value="<?php echo $valuesInputed['username']; ?>">
 
-                    <input type="password" class="form-control mb-3" name="password" id="password" placeholder="Département" 
+                    <input type="text" class="form-control mb-3" name="departement" id="departement" placeholder="Département" 
                         value="<?php echo $valuesInputed['password']; ?>">
 
                     <textarea class="form-control mb-3" name="password" id="password" 
-                    placeholder="Description" rows="4" maxlength="500"><?php echo $valuesInputed['password']; ?></textarea>
+                    placeholder="Description" rows="4" style="max-height: 200px;" maxlength="500"><?php echo $valuesInputed['password']; ?></textarea>
+
 
                     <p class="text-<?php echo $errorOccured == true ? "danger" : "success" ?>">
                         <?php echo $alertMessage; ?>
                     </p>
 
-                    <button type="submit" class="btn btn-primary w-100">Se connecter</button>
+                    <button type="submit" class="btn btn-primary w-100">Ajouter</button>
                 </form>
         <?php } ?>
     </div>
