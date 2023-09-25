@@ -13,21 +13,45 @@ session_start();
     <title>Event Feedback</title>
 </head>
 <?php 
+
+function anyIsEmpty($arrayOfInputs) {
+    $result = false;
+    foreach ($arrayOfInputs as $input) {
+        if (empty($_POST[$input])) {
+            $result = true;
+            break;
+        }
+    }
+
+    return $result;
+}
+
+function trojan($data){
+    $data = trim($data); //Enleve les caractères invisibles
+    $data = addslashes($data); //Mets des backslashs devant les ' et les  "
+    $data = htmlspecialchars($data); // Remplace les caractères spéciaux par leurs symboles comme ­< devient &lt;
+    
+    return $data;
+}
+
+if ($_SESSION["connexion"] == true) {
+
     $valuesInputed = array(
         "name" => "",
         "date" => "",
         "description" => "",
         "img" => "",
-        "department" => "",
+        "departementId" => "",
     );
     $errorOccured = false;
     $alertMessage = '';
 
+    $eventId = isset($_GET["id"]) ? $_GET["id"] : $_POST["hiddenId"];
 
     // FORM WAS SUBMITTED
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        $inputs = array("name", "date", "description", "img", "department");
+        $inputs = array("name", "date", "description", "img", "departementId");
 
         if (anyIsEmpty($inputs)) {
             $errorOccured = true;
@@ -39,38 +63,44 @@ session_start();
             $valuesInputed[$keys[$i]] = trojan($_POST[$inputs[$i]]);
         }
 
-        if (!$errorOccured) {      
-
+        if (!$errorOccured) {
             $servername = "localhost";
-            $usernameDB = "root";
-            $passwordDB = "root";
+            $username = "root";
+            $password = "root";
             $db = "event_feedback";
+        
+            // Create connection
+            $connection = mysqli_connect($servername, $username, $password, $db);
+        
+            // Check connection
+            if (!$connection) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
 
+            $updatedEvent_name = $valuesInputed['name'];
+            $updatedEvent_description = $valuesInputed['description'];
+            $updatedEvent_date = $valuesInputed['date'];
+            $updatedEvent_img = $valuesInputed['img'];
+            $updatedEvent_departementId = $valuesInputed['departementId'];
+            $updateQuery = "UPDATE events SET name='{$updatedEvent_name}', description=\"{$updatedEvent_description}\", date='{$updatedEvent_date}', img='{$updatedEvent_img}', departementId={$updatedEvent_departementId} WHERE id={$eventId}";
 
-        $connection->close();
+            echo $updateQuery;
+
+            if ($connection->query($updateQuery) === TRUE) {
+                $alertMessage = "L'ajout s'est bien produit";
+                header("Location: events.php");
+                exit;
+            }
+            else {
+                $alertMessage = "Erreur updating record : " . $connection->error;
+                $errorOccured = true;
+            }
+
+            mysqli_close($connection);
         }
     }
 
     
-    function anyIsEmpty($arrayOfInputs) {
-        $result = false;
-        foreach ($arrayOfInputs as $input) {
-            if (empty($_POST[$input])) {
-                $result = true;
-                break;
-            }
-        }
-
-        return $result;
-    }
-
-    function trojan($data){
-        $data = trim($data); //Enleve les caractères invisibles
-        $data = addslashes($data); //Mets des backslashs devant les ' et les  "
-        $data = htmlspecialchars($data); // Remplace les caractères spéciaux par leurs symboles comme ­< devient &lt;
-        
-        return $data;
-    }
 ?>
 <body>
     <div class="container-fluid">
@@ -81,11 +111,43 @@ session_start();
         </div>
     </div>
     <div class="p-4 screen-center col-12 col-md-6 col-xl-3">
-        <h1 class="text-center">Ajouter évènement</h1>
+        <h1 class="text-center">Modifier évènement</h1>
         <hr>
 
         <?php 
             if ($_SERVER['REQUEST_METHOD'] != 'POST' || $errorOccured == true) {
+
+                $servername = "localhost";
+                $username = "root";
+                $password = "root";
+                $db = "event_feedback";
+            
+                // Create connection
+                $connection = new mysqli($servername, $username, $password, $db);
+            
+                // Check connection
+                if ($connection->connect_error) {
+                    die("Connection failed: " . $connection->connect_error);
+                }
+            
+                $eventId = isset($_GET["id"]) ? $_GET["id"] : $_POST["hiddenId"];
+                $selectAllQuery = "SELECT * FROM events WHERE id=" . $eventId;
+                $result = $connection->query($selectAllQuery);
+                if ($result->num_rows <= 0) {
+                    echo "0 results";
+                }
+            
+                while($row = $result->fetch_assoc()) {
+                    $valuesInputed = array(
+                        "name" => $row["name"],
+                        "description" => $row["description"],
+                        "date" => $row["date"],
+                        "img" => $row["img"],
+                        "departementId" => $row["departementId"],
+                    );
+                }
+                $errorOccured = false;
+                $alertMessage = '';
         ?>
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" class="">
 
@@ -98,22 +160,30 @@ session_start();
                     <input type="text" class="form-control mb-3" name="img" id="img" placeholder="URL de l'image" 
                     value="<?php echo $valuesInputed['img']; ?>">
 
-                    <input type="text" class="form-control mb-3" name="department" id="department" placeholder="Département" 
-                        value="<?php echo $valuesInputed['department']; ?>">
+                    <input type="number" class="form-control mb-3" name="departementId" id="departementId" placeholder="Département" 
+                        value="<?php echo $valuesInputed['departementId']; ?>">
 
                     <textarea class="form-control mb-3" name="description" id="description" 
                     placeholder="Description" rows="4" style="max-height: 200px;" maxlength="500"><?php echo $valuesInputed['description']; ?></textarea>
 
+                    <input type="hidden" id="hiddenId" name="hiddenId" value="<?php echo $eventId;?>">
 
                     <p class="text-<?php echo $errorOccured == true ? "danger" : "success" ?>">
                         <?php echo $alertMessage; ?>
                     </p>
 
-                    <button type="submit" class="btn btn-primary w-100">Ajouter</button>
+                    <button type="submit" class="btn btn-primary w-100">Modifier</button>
                 </form>
         <?php } ?>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
+<?php 
+}
+else {
+    header("Location: login.php");
+    exit;
+}
+?>
 </html>
