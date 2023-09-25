@@ -23,22 +23,34 @@ if ($_SESSION["connexion"] == true) {
 <div class="container-fluid screen-center-y">
     <div class="row text-center cercle-x">
         <div class="col-sm-4 col-md-4">
-            <i class="fa-solid fa-circle img-fluid" style="color: #008a64;"></i>
+            <i class="fa-solid fa-circle img-fluid clickable-circle" style="color: #008a64;"></i>
         </div>
         <div class="col-sm-4 col-md-4">
-            <i class="fa-solid fa-circle" style="color: #ffc45d;"></i>
+            <i class="fa-solid fa-circle clickable-circle" style="color: #ffc45d;"></i>
         </div>
         <div class="col-sm-4 col-md-4">
-            <i class="fa-solid fa-circle" style="color: #df2350;"></i>
+            <i class="fa-solid fa-circle clickable-circle" style="color: #df2350;"></i>
         </div>
     </div>
 </div>
+
 <div class="m-5 fleche-retour">
     <i class="fa-sharp fa-solid fa-arrow-left"></i>
 </div>
 <div class="fixed-bottom text-center mb-4">
     <span class="">vote étudiant</span>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.clickable-circle').click(function() {
+            // Handle the click event here
+            alert('Circle clicked!');
+            // You can replace the alert with any action you want to perform
+        });
+    });
+</script>
 
 <?php 
 }
