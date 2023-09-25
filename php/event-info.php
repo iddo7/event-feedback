@@ -62,7 +62,7 @@ if ($_SESSION["connexion"] == true) {
     <div class="p-5">
         <div class="row mb-3">
             <div class="col-3 event-info-img" style="background: url('<?php echo $valuesInputed["img"] ?>')"></div>
-            <div class="col-9 event-info-details">
+            <div class="col-6 event-info-details">
                 <h1 class="m-0"><?php echo $valuesInputed["name"] ?></h1>
                 <div class="row">
                     <div class="col-12">
@@ -71,6 +71,9 @@ if ($_SESSION["connexion"] == true) {
                     </div>
                 </div>
                 <span><?php echo $valuesInputed["departementId"] ?></span>
+            </div>
+            <div class="col-3 d-flex align-items-center">
+                <button class="btn btn-primary w-100">Voter</button>
             </div>
         </div>
 
