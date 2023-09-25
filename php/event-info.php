@@ -84,7 +84,7 @@ if ($_SESSION["connexion"] == true) {
                             </div>
                         </div>
                         <div class="d-flex justify-content-center m-5">
-                            <a href="#" class="btn btn-primary">Voter</a>
+                            <a href="choose-vote-type.php?id=<?php echo $eventId ?>" class="btn btn-primary">Voter</a>
                         </div>
                     </div>
                 </div>

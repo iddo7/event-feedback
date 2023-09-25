@@ -1,6 +1,9 @@
 :root {
     --bs-body-font-family: 'Open Sans', sans-serif;
     --background: #f4f4f4;
+    --primary: #1a6eec;
+    --secondary: #a9aabc;
+    --dark: #444655;
 }
 
 h5 span {
@@ -112,4 +115,13 @@ ul {
 .custom-margin-2 {
     margin-top: 50px;
     margin-bottom: 100px;
+}
+
+.choose-icon {
+    color: var(--dark);
+    font-size: 15vw;
+}
+
+.choose-title {
+    margin-bottom: 6rem;
 }
