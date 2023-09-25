@@ -19,9 +19,14 @@ a:hover {
     color: var(--text);
 }
 
+.event-card {
+    background: none;
+    border: 0.25rem var(--dark) solid;
+}
 
-.card {
-    background-color: var(--secondary);
+.event-action-icon {
+    font-size: 2rem;
+    color: var(--dark);
 }
 
 .btn {
