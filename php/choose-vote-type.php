@@ -22,6 +22,8 @@ if ($_SESSION["connexion"] == true) {
     );
     $errorOccured = false;
     $alertMessage = '';
+    
+    $eventId = isset($_GET["id"]) ? $_GET["id"] : $_POST["hiddenId"];
 
 
     // FORM WAS SUBMITTED
@@ -92,13 +94,13 @@ if ($_SESSION["connexion"] == true) {
         <div class="row">
             <h1 class="choose-title text-center">Voter</h1>
             <div class="col-6 text-center">
-                <a href="#">
+                <a href="voting.php?type=student&id=<?php echo $eventId ?>">
                     <i class="choose-icon fa-solid fa-graduation-cap"></i>
                     <h2>Étudiant</h2>
                 </a>
             </div>
             <div class="col-6 text-center">
-                <a href="#">
+                <a href="voting.php?type=professional&id=<?php echo $eventId ?>">
                     <i class="choose-icon fa-solid fa-user-tie"></i>
                     <h2>Professionnel</h2>
                 </a>
