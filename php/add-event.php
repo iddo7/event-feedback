@@ -13,45 +13,8 @@ session_start();
     <title>Event Feedback</title>
 </head>
 <?php 
-    $valuesInputed = array(
-        "name" => "",
-        "date" => "",
-        "description" => "",
-        "img" => "",
-        "department" => "",
-    );
-    $errorOccured = false;
-    $alertMessage = '';
-
-
-    // FORM WAS SUBMITTED
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-        $inputs = array("name", "date", "description", "img", "department");
-
-        if (anyIsEmpty($inputs)) {
-            $errorOccured = true;
-            $alertMessage = 'Veuillez remplir tous les champs.';
-        }
-
-        for ($i = 0; $i < sizeof($inputs); $i++) {
-            $keys = array_keys($valuesInputed);
-            $valuesInputed[$keys[$i]] = trojan($_POST[$inputs[$i]]);
-        }
-
-        if (!$errorOccured) {      
-
-            $servername = "localhost";
-            $usernameDB = "root";
-            $passwordDB = "root";
-            $db = "event_feedback";
-
-
-        $connection->close();
-        }
-    }
-
     
+
     function anyIsEmpty($arrayOfInputs) {
         $result = false;
         foreach ($arrayOfInputs as $input) {
@@ -71,6 +34,65 @@ session_start();
         
         return $data;
     }
+
+    if ($_SESSION["connexion"] == true) {
+
+    $valuesInputed = array(
+        "name" => "",
+        "date" => "",
+        "description" => "",
+        "img" => "",
+        "departementId" => "",
+    );
+    $errorOccured = false;
+    $alertMessage = '';
+
+
+    // FORM WAS SUBMITTED
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        $inputs = array("name", "date", "description", "img", "departementId");
+
+        if (anyIsEmpty($inputs)) {
+            $errorOccured = true;
+            $alertMessage = 'Veuillez remplir tous les champs.';
+        }
+
+        for ($i = 0; $i < sizeof($inputs); $i++) {
+            $keys = array_keys($valuesInputed);
+            $valuesInputed[$keys[$i]] = trojan($_POST[$inputs[$i]]);
+        }
+
+        if (!$errorOccured) {      
+
+            $servername = "localhost";
+            $usernameDB = "root";
+            $passwordDB = "root";
+            $db = "event_feedback";
+
+            
+            $conn = mysqli_connect($servername, $usernameDB, $passwordDB, $db);
+
+            if (!$conn) {
+
+                die("Connection failed: " . mysqli_connect_error());
+
+            }
+
+            $sql = "INSERT INTO events (name, date, description, img, departementId)
+            VALUES ('" . $valuesInputed['name'] . "','" . $valuesInputed['date'] . "','" . $valuesInputed['description'] . "','" . $valuesInputed['img'] . "','" . $valuesInputed['departementId'] . "');";        
+
+            if(mysqli_query($conn,$sql)){
+                header("Location: events.php");
+                exit;
+                } 
+                else {
+                echo"Error:" . $sql . "<br>" . mysqli_error($conn);
+                }
+                mysqli_close($conn);
+        }
+    }
+
 ?>
 <body>
     <div class="container-fluid">
@@ -98,8 +120,8 @@ session_start();
                     <input type="text" class="form-control mb-3" name="img" id="img" placeholder="URL de l'image" 
                     value="<?php echo $valuesInputed['img']; ?>">
 
-                    <input type="text" class="form-control mb-3" name="department" id="department" placeholder="Département" 
-                        value="<?php echo $valuesInputed['department']; ?>">
+                    <input type="number" class="form-control mb-3" name="departementId" id="departementId" placeholder="Département" 
+                        value="<?php echo $valuesInputed['departementId']; ?>">
 
                     <textarea class="form-control mb-3" name="description" id="description" 
                     placeholder="Description" rows="4" style="max-height: 200px;" maxlength="500"><?php echo $valuesInputed['description']; ?></textarea>
@@ -111,7 +133,12 @@ session_start();
 
                     <button type="submit" class="btn btn-primary w-100">Ajouter</button>
                 </form>
-        <?php } ?>
+        <?php } }
+        else {
+            header("Location: login.php");
+            exit;
+        }
+        ?>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
