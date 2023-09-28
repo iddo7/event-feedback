@@ -14,27 +14,42 @@ session_start();
     <title>event-info</title>
 </head>
 <body>
-
 <?php 
 if ($_SESSION["connexion"] == true) {
 
+    if (!isset($_GET["id"]) || $_GET["id"] == null || !isset($_GET["type"]) || $_GET["type"] == null) {
+        header("Location: ../index.php");
+        exit;
+    }
+
+    $eventId = $_GET["id"];
+    $voteType = $_GET["type"];
 ?>
 
 <div class="container-fluid screen-center-y">
     <div class="row text-center cercle-x">
         <div class="col-sm-4 col-md-4">
-            <i class="fa-solid fa-circle img-fluid" style="color: #008a64;"></i>
+            <a href="increment-vote.php?type=<?php echo $voteType ?>&id=<?php echo $eventId ?>&feedback=green">
+                <i class="fa-solid fa-circle text-success"></i>
+            </a>
         </div>
         <div class="col-sm-4 col-md-4">
-            <i class="fa-solid fa-circle" style="color: #ffc45d;"></i>
+            <a href="increment-vote.php?type=<?php echo $voteType ?>&id=<?php echo $eventId ?>&feedback=yellow">
+                <i class="fa-solid fa-circle text-warning"></i>
+            </a>
         </div>
         <div class="col-sm-4 col-md-4">
-            <i class="fa-solid fa-circle" style="color: #df2350;"></i>
+            <a href="increment-vote.php?type=<?php echo $voteType ?>&id=<?php echo $eventId ?>&feedback=red">
+                <i class="fa-solid fa-circle text-danger"></i>
+            </a>
         </div>
     </div>
 </div>
+
 <div class="m-5 fleche-retour">
-    <i class="fa-sharp fa-solid fa-arrow-left"></i>
+    <a href="event-info.php?id=<?php echo $eventId ?>">
+        <i class="fa-sharp fa-solid fa-arrow-left"></i>
+    </a>
 </div>
 <div class="fixed-bottom text-center mb-4">
     <span class="">vote étudiant</span>
