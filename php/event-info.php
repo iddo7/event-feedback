@@ -58,12 +58,21 @@ if ($_SESSION["connexion"] == true) {
         $errorOccured = false;
         $alertMessage = '';
 ?>
-<div class="container-fluid">
-    <div class="p-5">
-        <div class="row mb-3">
-            <div class="col-3 event-info-img" style="background: url('<?php echo $valuesInputed["img"] ?>')"></div>
-            <div class="col-6 event-info-details">
-                <h1 class="m-0"><?php echo $valuesInputed["name"] ?></h1>
+<div class="container-fluid p-0">
+    <div class="p-5 bg-darker">
+        <div class="row mb-3 event-info-details">
+            <div class="col-4 event-info-img" style="background: url('<?php echo $valuesInputed["img"] ?>')"></div>
+            <div class="col-6">
+                <div class="row d-flex ajust-items-center">
+                    <div class="col-8">
+                        <h1 class="m-0"><?php echo $valuesInputed["name"] ?></h1>
+                    </div>
+                    <div class="col-4 d-flex align-items-center justify-content-center">
+                        <div class="d-flex justify-content-center w-100">
+                            <button class="btn btn-primary vote-btn w-100">Voter</button>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-12">
                         <span class="me-3"><?php echo $valuesInputed["date"] ?></span>
@@ -71,15 +80,13 @@ if ($_SESSION["connexion"] == true) {
                     </div>
                 </div>
                 <span><?php echo $valuesInputed["departementId"] ?></span>
+                <p><?php echo $valuesInputed["description"] ?></p>
             </div>
-            <div class="col-3 d-flex align-items-center">
-                <button class="btn btn-primary w-100">Voter</button>
+            <div class="col-2 d-flex align-items-center">
             </div>
         </div>
 
         <div class="row">
-            <h2 class="mb-1">Description</h2>
-            <p><?php echo $valuesInputed["description"] ?></p>
         </div>
 
     </div>

@@ -1,9 +1,10 @@
 :root {
     --bs-body-font-family: 'Open Sans', sans-serif;
-    --background: #f4f4f4;
+    --background: #e7e7e7;
     --primary: #1a6eec;
     --secondary: #a9aabc;
     --dark: #444655;
+    --darker: rgb(54, 54, 54);
 }
 
 h5 span {
@@ -136,6 +137,19 @@ ul {
 }
 
 .event-info-details {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+}
+
+.vote-btn {
+}
+
+.bg-darker {
+    background-color: var(--darker);
+}
+
+.bg-darker p, .bg-darker h1, .bg-darker span {
+    color: white;
+}
+
+.bg-grey {
+    background-color: var(--grey);
 }
