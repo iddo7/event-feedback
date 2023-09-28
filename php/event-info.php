@@ -62,8 +62,8 @@ if ($_SESSION["connexion"] == true) {
     <div class="p-5 bg-darker">
         <div class="row mb-3 event-info-details">
             <div class="col-4 event-info-img" style="background: url('<?php echo $valuesInputed["img"] ?>')"></div>
-            <div class="col-6">
-                <div class="row d-flex ajust-items-center">
+            <div class="col-8 ps-4">
+                <div class="row mb-2 d-flex ajust-items-center">
                     <div class="col-8">
                         <h1 class="m-0"><?php echo $valuesInputed["name"] ?></h1>
                     </div>
@@ -73,16 +73,18 @@ if ($_SESSION["connexion"] == true) {
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mb-4">
                     <div class="col-12">
-                        <span class="me-3"><?php echo $valuesInputed["date"] ?></span>
-                        <span><?php echo $valuesInputed["place"] ?></span>
+                        <span class="small me-3"><?php echo $valuesInputed["date"] ?></span>
+                        <span class="small me-3"><?php echo $valuesInputed["place"] ?></span>
+                        <span class="small me-3"><?php echo $valuesInputed["departementId"] ?></span>
                     </div>
                 </div>
-                <span><?php echo $valuesInputed["departementId"] ?></span>
-                <p><?php echo $valuesInputed["description"] ?></p>
-            </div>
-            <div class="col-2 d-flex align-items-center">
+                <div class="row">
+                    <div class="col-12">
+                        <p><?php echo $valuesInputed["description"] ?></p>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -93,16 +95,29 @@ if ($_SESSION["connexion"] == true) {
 </div>
 <div class="container-fluid">
     <div class="row p-5 d-flex justify-content-center">
-        <h2 class="">Votes</h2>
-        <div class="col-5 me-5">
-            <div class="row text-center">
+
+        <!-- Student Votes Section -->
+        <div class="votes-card col-5 me-5 bg-white shadow">
+            <div class="row p-3">
+                <div class="col-12">
+                    <h2 class="m-0">Étudiants</h2>
+                </div>
+            </div>
+            <div class="row p-3 text-center">
                 <div class="col-4 bg-success"><?php echo $valuesInputed["studentVotesGreen"] ?></div>
                 <div class="col-4 bg-warning"><?php echo $valuesInputed["studentVotesYellow"] ?></div>
                 <div class="col-4 bg-danger"><?php echo $valuesInputed["studentVotesRed"] ?></div>
             </div>
         </div>
-        <div class="col-5">
-            <div class="row text-center">
+
+        <!-- Professional Votes Section -->
+        <div class="votes-card col-5 me-5 bg-white shadow">
+            <div class="row p-3">
+                <div class="col-12">
+                    <h2 class="m-0">Professionels</h2>
+                </div>
+            </div>
+            <div class="row p-3 text-center">
                 <div class="col-4 bg-success"><?php echo $valuesInputed["professionalVotesGreen"] ?></div>
                 <div class="col-4 bg-warning"><?php echo $valuesInputed["professionalVotesYellow"] ?></div>
                 <div class="col-4 bg-danger"><?php echo $valuesInputed["professionalVotesRed"] ?></div>

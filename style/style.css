@@ -136,10 +136,8 @@ ul {
     background-size: cover!important;
 }
 
-.event-info-details {
-}
-
-.vote-btn {
+.votes-card {
+    border-radius: 0.7rem;
 }
 
 .bg-darker {
@@ -150,6 +148,6 @@ ul {
     color: white;
 }
 
-.bg-grey {
-    background-color: var(--grey);
+.shadow {
+    box-shadow: 2px -1px 24px 2px rgba(0,0,0,0.39);
 }
