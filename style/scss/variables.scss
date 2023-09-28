@@ -1,4 +1,5 @@
 // Modifying Bootstrap's default colors
+// sass --watch style/scss/variables.scss:style/scss/compiled-variables.css
 
 
 $blue: #1a6eec;
@@ -7,7 +8,7 @@ $dark-purple: #444655;
 $green: #008a64;
 $yellow: #ffc45d;
 $red: #df2350;
-$white-smoke : #f4f4f4;
+$white-smoke : #e7e7e7;
 
 $primary: $blue;
 $secondary: $grey;
@@ -46,8 +47,8 @@ h1 {
   font-size: 2.4rem;
 }
 
-h2 {font-size: 1.8rem;}
+h2 {font-size: 1.5rem;}
 
-h3 {font-size: 1.35rem;}
+h3 {font-size: 1.15rem;}
 
 small, .text_small {font-size: 0.833rem;}

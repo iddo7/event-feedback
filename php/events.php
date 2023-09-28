@@ -39,35 +39,31 @@ if ($_SESSION["connexion"] == true) {
 ?>
 <body>
     <div class="container">  
-        <?php 
-            while($row = $result->fetch_assoc()) {
-                ?>
-                <div class="event-card card">
-                    <a href="event-info.php?id=<?php echo $row["id"] ?>">
-                        <div class="row">
-                            <div class="col-3">
-                                <img class="event-card-img img-fluid" src="<?php echo $row["img"] ?>">
-                            </div>
-                            <div class="col-7 d-flex align-items-center">
-                                <div>
-                                    <h3 class="event-card-title"><?php echo $row["name"] ?></h3>
-                                    <ul class="event-card-list">
-                                        <li class="event-card-item"><?php echo $row["date"] ?></li>
-                                        <li class="event-card-item"><?php echo $row["departementId"] ?></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <a href="modify-event.php?id=<?php echo $row["id"] ?>">
-                                    <i class="event-action-icon fa-solid fa-pen-to-square"></i>
-                                </a>
+        <?php while($row = $result->fetch_assoc()) { ?>
+            <div class="event-card card">
+                <a href="event-info.php?id=<?php echo $row["id"] ?>">
+                    <div class="row">
+                        <div class="col-3">
+                            <img class="event-card-img img-fluid" src="<?php echo $row["img"] ?>">
+                        </div>
+                        <div class="col-7 d-flex align-items-center">
+                            <div>
+                                <h3 class="event-card-title"><?php echo $row["name"] ?></h3>
+                                <ul class="event-card-list">
+                                    <li class="event-card-item"><?php echo $row["date"] ?></li>
+                                    <li class="event-card-item"><?php echo $row["departementId"] ?></li>
+                                </ul>
                             </div>
                         </div>
-                    </a>
-                </div>
-                <?php
-            }
-        ?>
+                        <div class="col-2">
+                            <a href="modify-event.php?id=<?php echo $row["id"] ?>">
+                                <i class="event-action-icon fa-solid fa-pen-to-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        <?php } ?>
     </div>
 
     <?php 

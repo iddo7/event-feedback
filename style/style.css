@@ -1,9 +1,10 @@
 :root {
     --bs-body-font-family: 'Open Sans', sans-serif;
-    --background: #f4f4f4;
+    --background: #e7e7e7;
     --primary: #1a6eec;
     --secondary: #a9aabc;
     --dark: #444655;
+    --darker: rgb(54, 54, 54);
 }
 
 h5 span {
@@ -129,4 +130,24 @@ ul {
 
 .choose-title {
     margin-bottom: 6rem;
+}
+
+.event-info-img {
+    background-size: cover!important;
+}
+
+.votes-card {
+    border-radius: 0.7rem;
+}
+
+.bg-darker {
+    background-color: var(--darker);
+}
+
+.bg-darker p, .bg-darker h1, .bg-darker span {
+    color: white;
+}
+
+.shadow {
+    box-shadow: 2px -1px 24px 2px rgba(0,0,0,0.39);
 }

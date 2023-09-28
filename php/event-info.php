@@ -17,82 +17,132 @@ session_start();
 <?php 
 if ($_SESSION["connexion"] == true) {
 
+    if ($_SERVER['REQUEST_METHOD'] != 'POST' || $errorOccured == true) {
+
+        $servername = "localhost";
+        $username = "root";
+        $password = "root";
+        $db = "event_feedback";
+    
+        // Create connection
+        $connection = new mysqli($servername, $username, $password, $db);
+    
+        // Check connection
+        if ($connection->connect_error) {
+            die("Connection failed: " . $connection->connect_error);
+        }
+    
+        $eventId = isset($_GET["id"]) ? $_GET["id"] : $_POST["hiddenId"];
+        $selectAllQuery = "SELECT * FROM events WHERE id=" . $eventId;
+        $result = $connection->query($selectAllQuery);
+        if ($result->num_rows <= 0) {
+            echo "0 results";
+        }
+        while($row = $result->fetch_assoc()) {
+            $valuesInputed = array(
+                "name" => $row["name"],
+                "date" => $row["date"],
+                "place" => $row["place"],
+                "description" => $row["description"],
+                "img" => $row["img"],
+                "departementId" => $row["departementId"],
+                "studentVotesGreen" => $row["studentVotesGreen"],
+                "studentVotesYellow" => $row["studentVotesYellow"],
+                "studentVotesRed" => $row["studentVotesRed"],
+                "professionalVotesGreen" => $row["professionalVotesGreen"],
+                "professionalVotesYellow" => $row["professionalVotesYellow"],
+                "professionalVotesRed" => $row["professionalVotesRed"],
+            );
+        }
+
+        $errorOccured = false;
+        $alertMessage = '';
 ?>
-<div class="container-fluid vh-100">
-    <div class="row height100">
-        <?php 
-            if ($_SERVER['REQUEST_METHOD'] != 'POST' || $errorOccured == true) {
-
-                $servername = "localhost";
-                $username = "root";
-                $password = "root";
-                $db = "event_feedback";
-            
-                // Create connection
-                $connection = new mysqli($servername, $username, $password, $db);
-            
-                // Check connection
-                if ($connection->connect_error) {
-                    die("Connection failed: " . $connection->connect_error);
-                }
-            
-                $eventId = isset($_GET["id"]) ? $_GET["id"] : $_POST["hiddenId"];
-                $selectAllQuery = "SELECT * FROM events WHERE id=" . $eventId;
-                $result = $connection->query($selectAllQuery);
-                if ($result->num_rows <= 0) {
-                    echo "0 results";
-                }
-                while($row = $result->fetch_assoc()) {
-                    $valuesInputed = array(
-                        "name" => $row["name"],
-                        "date" => $row["date"],
-                        "description" => $row["description"],
-                        "img" => $row["img"],
-                        "departementId" => $row["departementId"],
-                        "studentVotesGreen" => $row["studentVotesGreen"],
-                        "studentVotesYellow" => $row["studentVotesYellow"],
-                        "studentVotesRed" => $row["studentVotesRed"],
-                    );
-                }
-
-                $errorOccured = false;
-                $alertMessage = '';
-        ?>
-            <div class="col-md-6 height100">
-                <div class="card border-0 height100">
-                    <img class="card-img-top height100" src="<?php echo $valuesInputed["img"] ?>" alt="Card image cap">
-                </div>
-            </div>
-            <div class="col-md-6 d-flex align-items-center">
-                <div class="card border-0 mx-auto">
-                    <div class="card-body">
-                        <h1 class="card-title display-3"><?php echo $valuesInputed["name"] ?></h1>
-                        <p class="card-text"><?php echo $valuesInputed["date"] ?></p>
-                        <p class="card-text"><?php echo $valuesInputed["description"] ?></p>
-                        <div class="row">
-                            <div class="col-md-4 cercle">
-                                <i class="fa-solid fa-circle" style="color: #59eb24;"></i>
-                                <h2 class="display-5"><?php echo $valuesInputed["studentVotesGreen"] ?></h2>                                              
-                            </div>
-                            <div class="col-md-4 cercle">
-                                <i class="fa-solid fa-circle" style="color: #59eb24;"></i>
-                                <h2 class="display-5"><?php echo $valuesInputed["studentVotesYellow"] ?></h2>                                              
-                            </div>
-                            <div class="col-md-4 cercle">
-                                <i class="fa-solid fa-circle" style="color: #59eb24;"></i>  
-                                <h2 class="display-5"><?php echo $valuesInputed["studentVotesRed"] ?></h2>                      
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-center m-5">
-                            <a href="choose-vote-type.php?id=<?php echo $eventId ?>" class="btn btn-primary">Voter</a>
+<div class="container-fluid p-0">
+    <div class="p-5 bg-darker">
+        <div class="row mb-3 event-info-details">
+            <div class="col-4 event-info-img" style="background: url('<?php echo $valuesInputed["img"] ?>')"></div>
+            <div class="col-8 ps-4">
+                <div class="row mb-2 d-flex ajust-items-center">
+                    <div class="col-8">
+                        <h1 class="m-0"><?php echo $valuesInputed["name"] ?></h1>
+                    </div>
+                    <div class="col-4 d-flex align-items-center justify-content-center">
+                        <div class="d-flex justify-content-center w-100">
+                            <a href="choose-vote-type.php?id=<?php echo $eventId ?>" class="w-100">
+                                <button class="btn btn-primary vote-btn w-100">Voter</button>
+                            </a>
                         </div>
                     </div>
                 </div>
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <span class="small me-3"><?php echo $valuesInputed["date"] ?></span>
+                        <span class="small me-3"><?php echo $valuesInputed["place"] ?></span>
+                        <span class="small me-3"><?php echo $valuesInputed["departementId"] ?></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <p><?php echo $valuesInputed["description"] ?></p>
+                    </div>
+                </div>
             </div>
-        <?php } ?>
+        </div>
+
+        <div class="row">
+        </div>
+
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row p-5 d-flex justify-content-center">
+
+        <!-- Student Votes Section -->
+        <div class="votes-card col-5 me-5 bg-white shadow">
+            <div class="row p-3">
+                <div class="col-12">
+                    <h2 class="m-0">Étudiants</h2>
+                </div>
+            </div>
+            <div class="row p-3 text-center">
+                <div class="col-4 bg-success"><?php echo $valuesInputed["studentVotesGreen"] ?></div>
+                <div class="col-4 bg-warning"><?php echo $valuesInputed["studentVotesYellow"] ?></div>
+                <div class="col-4 bg-danger"><?php echo $valuesInputed["studentVotesRed"] ?></div>
+            </div>
+        </div>
+
+        <!-- Professional Votes Section -->
+        <div class="votes-card col-5 bg-white shadow">
+            <div class="row p-3">
+                <div class="col-12">
+                    <h2 class="m-0">Professionels</h2>
+                </div>
+            </div>
+            <div class="row p-3 text-center">
+                <div class="col-4 bg-success"><?php echo $valuesInputed["professionalVotesGreen"] ?></div>
+                <div class="col-4 bg-warning"><?php echo $valuesInputed["professionalVotesYellow"] ?></div>
+                <div class="col-4 bg-danger"><?php echo $valuesInputed["professionalVotesRed"] ?></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-2">
+            <a href="modify-event.php?id=<?php echo $eventId ?>" class="w-100">
+                <button class="btn btn-outline-primary vote-btn w-100">Modifier</button>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="#" class="w-100">
+                <button class="btn btn-outline-danger vote-btn w-100">Supprimer</button>
+            </a>
+        </div>
     </div>
 </div>
 <?php 
+}
 }
 else {
     header("Location: login.php");
