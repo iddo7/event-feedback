@@ -47,7 +47,9 @@ if ($_SESSION["connexion"] == true) {
 </div>
 
 <div class="m-5 fleche-retour">
-    <i class="fa-sharp fa-solid fa-arrow-left"></i>
+    <a href="event-info.php?id=<?php echo $eventId ?>">
+        <i class="fa-sharp fa-solid fa-arrow-left"></i>
+    </a>
 </div>
 <div class="fixed-bottom text-center mb-4">
     <span class="">vote étudiant</span>
