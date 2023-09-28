@@ -69,7 +69,9 @@ if ($_SESSION["connexion"] == true) {
                     </div>
                     <div class="col-4 d-flex align-items-center justify-content-center">
                         <div class="d-flex justify-content-center w-100">
-                            <button class="btn btn-primary vote-btn w-100">Voter</button>
+                            <a href="choose-vote-type.php?id=<?php echo $eventId ?>" class="w-100">
+                                <button class="btn btn-primary vote-btn w-100">Voter</button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -111,7 +113,7 @@ if ($_SESSION["connexion"] == true) {
         </div>
 
         <!-- Professional Votes Section -->
-        <div class="votes-card col-5 me-5 bg-white shadow">
+        <div class="votes-card col-5 bg-white shadow">
             <div class="row p-3">
                 <div class="col-12">
                     <h2 class="m-0">Professionels</h2>
@@ -122,6 +124,20 @@ if ($_SESSION["connexion"] == true) {
                 <div class="col-4 bg-warning"><?php echo $valuesInputed["professionalVotesYellow"] ?></div>
                 <div class="col-4 bg-danger"><?php echo $valuesInputed["professionalVotesRed"] ?></div>
             </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-2">
+            <a href="modify-event.php?id=<?php echo $eventId ?>" class="w-100">
+                <button class="btn btn-outline-primary vote-btn w-100">Modifier</button>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="#" class="w-100">
+                <button class="btn btn-outline-danger vote-btn w-100">Supprimer</button>
+            </a>
         </div>
     </div>
 </div>
