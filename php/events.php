@@ -38,24 +38,26 @@ if ($_SESSION["connexion"] == true) {
     }
 ?>
 <body>
-    <div class="container mt-5">
-        <div class="row mb-5">
-            <div class="col-9">
-                <h1>Évènements</h1>
-            </div>
-            <div class="col-3 h-100">
-                <button class="btn btn-primary vote-btn w-100">
-                    <a href="add-event.php">
-                        <i class="fa-solid fa-calendar-plus"></i>
-                        Ajouter
-                    </a>
-                </button>
+    <div class="container-fluid p-0 mb-5">
+        <div class="p-5 bg-darker">
+            <div class="row">
+                <div class="col-10">
+                    <h1>Évènements</h1>
+                </div>
+                <div class="col-2 d-flex justify-content-end h-100">
+                    <button class="btn btn-primary vote-btn btn-lg">
+                        <a href="add-event.php">
+                            <i class="fa-solid fa-calendar-plus"></i>
+                            Ajouter
+                        </a>
+                    </button>
+                </div>
             </div>
         </div>
-                <a href="event-info.php?id=<?php echo $row["id"] ?>" class="p-0">
-                </a>
-        <div class="row">
-            <div class="col-12">
+    </div>
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-8">
 
             <?php while($row = $result->fetch_assoc()) { ?>
                 <?php $eventInfoLink = "event-info.php?id=" . $row["id"] ?>
@@ -87,7 +89,9 @@ if ($_SESSION["connexion"] == true) {
                             </div>
                         </div>
                     </div>
+
             <?php } ?>
+            </div>
 
             </div>
         </div>

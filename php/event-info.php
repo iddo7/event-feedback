@@ -67,12 +67,13 @@ if ($_SESSION["connexion"] == true) {
                     <div class="col-8">
                         <h1 class="m-0"><?php echo $valuesInputed["name"] ?></h1>
                     </div>
-                    <div class="col-4 d-flex align-items-center justify-content-center">
-                        <div class="d-flex justify-content-center w-100">
-                            <a href="choose-vote-type.php?id=<?php echo $eventId ?>" class="w-100">
-                                <button class="btn btn-primary vote-btn w-100">Voter</button>
-                            </a>
-                        </div>
+                    <div class="col-4">
+                        <a href="choose-vote-type.php?id=<?php echo $eventId ?>" class="d-flex justify-content-end">
+                            <button class="btn btn-primary vote-btn btn-lg">
+                                <i class="fa-solid fa-check-to-slot"></i>
+                                Voter
+                            </button>
+                        </a>
                     </div>
                 </div>
                 <div class="row mb-4">
@@ -83,7 +84,7 @@ if ($_SESSION["connexion"] == true) {
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-xl-10">
                         <p><?php echo $valuesInputed["description"] ?></p>
                     </div>
                 </div>
