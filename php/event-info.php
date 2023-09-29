@@ -99,9 +99,9 @@ if ($_SESSION["connexion"] == true) {
     <div class="row p-5 d-flex justify-content-center">
 
         <!-- Student Votes Section -->
-        <div class="votes-card col-5 me-5 bg-white shadow">
+        <div class="card col-5 me-5 shadow">
             <div class="row p-3">
-                <div class="col-12">
+                <div class="col-12 p-0">
                     <h2 class="m-0">Étudiants</h2>
                 </div>
             </div>
@@ -113,9 +113,9 @@ if ($_SESSION["connexion"] == true) {
         </div>
 
         <!-- Professional Votes Section -->
-        <div class="votes-card col-5 bg-white shadow">
+        <div class="card col-5 shadow">
             <div class="row p-3">
-                <div class="col-12">
+                <div class="col-12 p-0">
                     <h2 class="m-0">Professionels</h2>
                 </div>
             </div>
