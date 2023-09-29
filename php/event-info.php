@@ -61,7 +61,7 @@ if ($_SESSION["connexion"] == true) {
 <div class="container-fluid p-0">
     <div class="p-5 bg-darker">
         <div class="row mb-3 event-info-details">
-            <div class="col-4 event-info-img" style="background: url('<?php echo $valuesInputed["img"] ?>')"></div>
+            <div class="col-4 event-img" style="background: url('<?php echo $valuesInputed["img"] ?>')"></div>
             <div class="col-8 ps-4">
                 <div class="row mb-2 d-flex ajust-items-center">
                     <div class="col-8">

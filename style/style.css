@@ -21,14 +21,24 @@ a:hover {
     color: var(--text);
 }
 
-.event-card {
-    background: none;
-    border: 0.25rem var(--dark) solid;
+button i {
+    margin-right: 0.2rem;
 }
 
-.event-action-icon {
-    font-size: 2rem;
+.event-card-infos {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+}
+
+.event-card-infos h2 {
+    margin-bottom: 0.75rem;
+}
+
+.event-card-action-icon {
+    font-size: 1.6rem;
     color: var(--dark);
+    opacity: 0.5;
 }
 
 .btn {
@@ -135,7 +145,7 @@ ul {
     margin-bottom: 6rem;
 }
 
-.event-info-img {
+.event-img {
     background-size: cover!important;
 }
 

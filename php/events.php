@@ -39,22 +39,54 @@ if ($_SESSION["connexion"] == true) {
 ?>
 <body>
     <div class="container mt-5">
+        <div class="row mb-5">
+            <div class="col-9">
+                <h1>Évènements</h1>
+            </div>
+            <div class="col-3 h-100">
+                <button class="btn btn-primary vote-btn w-100">
+                    <a href="add-event.php">
+                        <i class="fa-solid fa-calendar-plus"></i>
+                        Ajouter
+                    </a>
+                </button>
+            </div>
+        </div>
+                <a href="event-info.php?id=<?php echo $row["id"] ?>" class="p-0">
+                </a>
         <div class="row">
             <div class="col-12">
+
             <?php while($row = $result->fetch_assoc()) { ?>
-                <div class="card">
-                    <div class="row p-3">
-                        <div class="col-3 event-info-img" style="background: url('<?php echo $row["img"] ?>')"></div>
-                        <div class="col-7">
-                            <h2 class="m-0"><?php echo $row["name"] ?></h2>
-                            <p><?php echo $row["place"] ?></p>
-                            <p><?php echo $row["date"] ?></p>
-                        </div>
-                        <div class="col-2">
-                            <h1>ccc</h1>
+                <?php $eventInfoLink = "event-info.php?id=" . $row["id"] ?>
+                    <div class="card shadow mb-4">
+                        <div class="row m-0 p-3">
+                            <a class="col-3 event-img" style="background: url('<?php echo $row["img"] ?>')" href="<?php echo $eventInfoLink ?>"></a>
+                            <a class="col-7 event-card-infos" href="<?php echo $eventInfoLink ?>">
+                                <h2 class=""><?php echo $row["name"] ?></h2>
+                                <p><?php echo $row["place"] ?></p>
+                                <p><?php echo $row["date"] ?></p>
+                            </a>
+
+                            <div class="col-2 d-inline-flex align-items-center justify-content-center">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <!-- Edit Button -->
+                                        <a href="modify-event.php?id=<?php echo $row["id"] ?>">
+                                            <i class="event-card-action-icon fa-solid fa-pen-to-square"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col-6">
+                                        <!-- Delete Button 
+                                        -->
+                                        <a href="delete-event.php?id=<?php echo $row["id"] ?>">
+                                            <i class="event-card-action-icon fa-solid fa-trash"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
             <?php } ?>
 
             </div>
