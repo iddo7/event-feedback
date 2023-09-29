@@ -135,7 +135,7 @@ if ($_SESSION["connexion"] == true) {
             </a>
         </div>
         <div class="col-2">
-            <a href="#" class="w-100">
+            <a href="delete-event.php?id=<?php echo $eventId ?>" class="w-100">
                 <button class="btn btn-outline-danger vote-btn w-100">Supprimer</button>
             </a>
         </div>
