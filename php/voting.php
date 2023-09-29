@@ -26,7 +26,7 @@ if ($_SESSION["connexion"] == true) {
     $voteType = $_GET["type"];
 ?>
 
-<div class="container-fluid screen-center-y">
+<div class="container screen-center">
     <div class="row text-center cercle-x">
         <div class="col-sm-4 col-md-4">
             <a href="increment-vote.php?type=<?php echo $voteType ?>&id=<?php echo $eventId ?>&feedback=green">
