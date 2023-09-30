@@ -72,13 +72,19 @@ if ($_SESSION["connexion"] == true) {
 
                             <div class="col-2 d-inline-flex align-items-center justify-content-center">
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-4">
+                                        <!-- Vote Button -->
+                                        <a href="choose-vote-type.php?id=<?php echo $row["id"] ?>">
+                                            <i class="event-card-action-icon fa-solid fa-check-to-slot"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col-4">
                                         <!-- Edit Button -->
                                         <a href="modify-event.php?id=<?php echo $row["id"] ?>">
                                             <i class="event-card-action-icon fa-solid fa-pen-to-square"></i>
                                         </a>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-4">
                                         <!-- Delete Button 
                                         -->
                                         <a href="delete-event.php?id=<?php echo $row["id"] ?>">
