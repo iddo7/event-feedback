@@ -51,6 +51,7 @@ button i {
 }
 
 .fleche-retour {
+    color: var(--secondary);
     font-size: 40px;
 }
 
