@@ -90,19 +90,23 @@ if ($_SESSION["connexion"] == true) {
             </div>
         </div>
     </div>
-    <div class="container-fluid screen-center-y">
-        <div class="row">
-            <h1 class="choose-title text-center">Voter</h1>
-            <div class="col-6 text-center">
-                <a href="voting.php?type=student&id=<?php echo $eventId ?>">
-                    <i class="choose-icon fa-solid fa-graduation-cap"></i>
-                    <h2>Étudiant</h2>
+    <div class="container screen-center">
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h1>Voter</h1>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-4 me-5">
+                <a href="voting.php?type=professional&id=<?php echo $eventId ?>" class="card shadow p-5 text-center">
+                    <i class="choose-icon fa-solid fa-user-tie mb-3"></i>
+                    <h2>Professionnel</h2>
                 </a>
             </div>
-            <div class="col-6 text-center">
-                <a href="voting.php?type=professional&id=<?php echo $eventId ?>">
-                    <i class="choose-icon fa-solid fa-user-tie"></i>
-                    <h2>Professionnel</h2>
+            <div class="col-4">
+                <a href="voting.php?type=student&id=<?php echo $eventId ?>" class="card shadow p-5 text-center">
+                    <i class="choose-icon fa-solid fa-graduation-cap mb-3"></i>
+                    <h2>Étudiant</h2>
                 </a>
             </div>
         </div>
