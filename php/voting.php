@@ -11,6 +11,7 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../style/scss/compiled-variables.css">
     <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/voting.css">
     <title>event-info</title>
 </head>
 <body>
@@ -52,7 +53,7 @@ if ($_SESSION["connexion"] == true) {
     </a>
 </div>
 <div class="fixed-bottom text-center mb-4">
-    <span class="">vote étudiant</span>
+    <span>vote étudiant</span>
 </div>
 
 <?php 

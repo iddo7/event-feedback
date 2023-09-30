@@ -25,18 +25,22 @@ if ($_SESSION["connexion"] == true) {
             </div>
         </div>
     </div>
-    <div class="container-fluid screen-center-y">
-        <div class="row">
-            <h1 class="choose-title text-center">Accueil</h1>
-            <div class="col-6 text-center">
-                <a href="#">
-                    <i class="choose-icon fa-solid fa-user-plus"></i>
-                    <h2>Créer utilisateur</h2>
+    <div class="container screen-center">
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h1>Accueil</h1>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-4 me-5">
+                <a href="#" class="card shadow p-5 text-center">
+                    <i class="choose-icon fa-solid fa-users-gear mb-3"></i>
+                    <h2>Utilisateurs</h2>
                 </a>
             </div>
-            <div class="col-6 text-center">
-                <a href="php/events.php">
-                    <i class="choose-icon fa-solid fa-calendar-days"></i>
+            <div class="col-4">
+                <a href="php/events.php" class="card shadow p-5 text-center">
+                    <i class="choose-icon fa-solid fa-calendar-days mb-3"></i>
                     <h2>Évènements</h2>
                 </a>
             </div>

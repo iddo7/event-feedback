@@ -38,33 +38,73 @@ if ($_SESSION["connexion"] == true) {
     }
 ?>
 <body>
-    <div class="container">  
-        <?php while($row = $result->fetch_assoc()) { ?>
-            <div class="event-card card">
-                <a href="event-info.php?id=<?php echo $row["id"] ?>">
-                    <div class="row">
-                        <div class="col-3">
-                            <img class="event-card-img img-fluid" src="<?php echo $row["img"] ?>">
-                        </div>
-                        <div class="col-7 d-flex align-items-center">
-                            <div>
-                                <h3 class="event-card-title"><?php echo $row["name"] ?></h3>
-                                <ul class="event-card-list">
-                                    <li class="event-card-item"><?php echo $row["date"] ?></li>
-                                    <li class="event-card-item"><?php echo $row["departementId"] ?></li>
-                                </ul>
+    <div class="container-fluid p-0 mb-5">
+        <div class="p-5 bg-darker">
+            <div class="row">
+                <div class="col-10">
+                    <h1>Évènements</h1>
+                </div>
+                <div class="col-2 d-flex justify-content-end h-100">
+                    <button class="btn btn-primary vote-btn btn-lg">
+                        <a href="add-event.php">
+                            <i class="fa-solid fa-calendar-plus"></i>
+                            Ajouter
+                        </a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-8">
+
+            <?php while($row = $result->fetch_assoc()) { ?>
+                <?php $eventInfoLink = "event-info.php?id=" . $row["id"] ?>
+                    <div class="card shadow mb-4">
+                        <div class="row m-0 p-3">
+                            <a class="col-3 event-img" style="background: url('<?php echo $row["img"] ?>')" href="<?php echo $eventInfoLink ?>"></a>
+                            <a class="col-7 event-card-infos" href="<?php echo $eventInfoLink ?>">
+                                <h2 class=""><?php echo $row["name"] ?></h2>
+                                <p><?php echo $row["place"] ?></p>
+                                <p><?php echo $row["date"] ?></p>
+                            </a>
+
+                            <div class="col-2 d-inline-flex align-items-center justify-content-center">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <!-- Vote Button -->
+                                        <a href="choose-vote-type.php?id=<?php echo $row["id"] ?>">
+                                            <i class="event-card-action-icon fa-solid fa-check-to-slot"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col-4">
+                                        <!-- Edit Button -->
+                                        <a href="modify-event.php?id=<?php echo $row["id"] ?>">
+                                            <i class="event-card-action-icon fa-solid fa-pen-to-square"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col-4">
+                                        <!-- Delete Button 
+                                        -->
+                                        <a href="delete-event.php?id=<?php echo $row["id"] ?>">
+                                            <i class="event-card-action-icon fa-solid fa-trash"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-2">
-                            <a href="modify-event.php?id=<?php echo $row["id"] ?>">
-                                <i class="event-action-icon fa-solid fa-pen-to-square"></i>
-                            </a>
-                        </div>
                     </div>
-                </a>
+
+            <?php } ?>
             </div>
-        <?php } ?>
+
+            </div>
+        </div>
     </div>
+
+
+
 
     <?php 
 }

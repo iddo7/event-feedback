@@ -61,18 +61,19 @@ if ($_SESSION["connexion"] == true) {
 <div class="container-fluid p-0">
     <div class="p-5 bg-darker">
         <div class="row mb-3 event-info-details">
-            <div class="col-4 event-info-img" style="background: url('<?php echo $valuesInputed["img"] ?>')"></div>
+            <div class="col-4 event-img" style="background: url('<?php echo $valuesInputed["img"] ?>')"></div>
             <div class="col-8 ps-4">
                 <div class="row mb-2 d-flex ajust-items-center">
                     <div class="col-8">
                         <h1 class="m-0"><?php echo $valuesInputed["name"] ?></h1>
                     </div>
-                    <div class="col-4 d-flex align-items-center justify-content-center">
-                        <div class="d-flex justify-content-center w-100">
-                            <a href="choose-vote-type.php?id=<?php echo $eventId ?>" class="w-100">
-                                <button class="btn btn-primary vote-btn w-100">Voter</button>
-                            </a>
-                        </div>
+                    <div class="col-4">
+                        <a href="choose-vote-type.php?id=<?php echo $eventId ?>" class="d-flex justify-content-end">
+                            <button class="btn btn-primary vote-btn btn-lg">
+                                <i class="fa-solid fa-check-to-slot"></i>
+                                Voter
+                            </button>
+                        </a>
                     </div>
                 </div>
                 <div class="row mb-4">
@@ -83,7 +84,7 @@ if ($_SESSION["connexion"] == true) {
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-xl-10">
                         <p><?php echo $valuesInputed["description"] ?></p>
                     </div>
                 </div>
@@ -99,9 +100,9 @@ if ($_SESSION["connexion"] == true) {
     <div class="row p-5 d-flex justify-content-center">
 
         <!-- Student Votes Section -->
-        <div class="votes-card col-5 me-5 bg-white shadow">
+        <div class="card col-5 me-5 shadow">
             <div class="row p-3">
-                <div class="col-12">
+                <div class="col-12 p-0">
                     <h2 class="m-0">Étudiants</h2>
                 </div>
             </div>
@@ -113,9 +114,9 @@ if ($_SESSION["connexion"] == true) {
         </div>
 
         <!-- Professional Votes Section -->
-        <div class="votes-card col-5 bg-white shadow">
+        <div class="card col-5 shadow">
             <div class="row p-3">
-                <div class="col-12">
+                <div class="col-12 p-0">
                     <h2 class="m-0">Professionels</h2>
                 </div>
             </div>
