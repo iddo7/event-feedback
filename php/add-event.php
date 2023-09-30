@@ -102,7 +102,7 @@ session_start();
             </div>
         </div>
     </div>
-    <div class="p-4 screen-center col-12 col-md-6 col-xl-3">
+    <div class="p-4 screen-center col-12 col-md-6 col-xl-4">
         <h1 class="text-center">Ajouter évènement</h1>
         <hr>
 
@@ -131,7 +131,16 @@ session_start();
                         <?php echo $alertMessage; ?>
                     </p>
 
-                    <button type="submit" class="btn btn-primary w-100">Ajouter</button>
+                    <div class="row">
+                        <div class="col-6">
+                            <a href="events.php">
+                                <button type="button" class="btn btn-outline-danger w-100">Annuler</button>
+                            </a>
+                        </div>
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-primary w-100">Ajouter</button>
+                        </div>
+                    </div>
                 </form>
         <?php } }
         else {
