@@ -70,6 +70,7 @@ if ($_SESSION["connexion"] == true) {
             $valuesInputed[$keys[$i]] = trojan($_POST[$inputs[$i]]);
         }
 
+
         if (!$errorOccured) {
 
             $servername = "localhost";
@@ -86,7 +87,7 @@ if ($_SESSION["connexion"] == true) {
             }
 
             $sql = "INSERT INTO users (email, password)
-            VALUES ('" . $valuesInputed['email'] . "','" . $valuesInputed['mdp'] . "');";
+            VALUES ('" . $valuesInputed['email'] . "','" .  $valuesInputed['mdp'] = md5($_POST['mdp']) . "');";
 
             if (mysqli_query($conn, $sql)) {
                 header("Location: ../index.php");
