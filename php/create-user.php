@@ -13,8 +13,8 @@ session_start();
     <link rel="stylesheet" href="../style/style.css">
     <title>create-user</title>
 </head>
-<?php
 
+<?php
 
 function anyIsEmpty($arrayOfInputs)
 {
@@ -31,9 +31,9 @@ function anyIsEmpty($arrayOfInputs)
 
 function trojan($data)
 {
-    $data = trim($data); //Enleve les caractères invisibles
-    $data = addslashes($data); //Mets des backslashs devant les ' et les  "
-    $data = htmlspecialchars($data); // Remplace les caractères spéciaux par leurs symboles comme ­< devient &lt;
+    $data = trim($data); 
+    $data = addslashes($data); 
+    $data = htmlspecialchars($data); 
 
     return $data;
 }
@@ -41,6 +41,7 @@ function trojan($data)
 if ($_SESSION["connexion"] == true) {
 
     $valuesInputed = array(
+        "prenom" => "", 
         "email" => "",
         "mdp" => "",
         "verification" => "",
@@ -48,18 +49,15 @@ if ($_SESSION["connexion"] == true) {
     $errorOccured = false;
     $alertMessage = '';
 
-
-    // FORM WAS SUBMITTED
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        $inputs = array("email", "mdp", "verification"); // Add 'verification' to the inputs
+        $inputs = array("prenom", "email", "mdp", "verification");
 
         if (anyIsEmpty($inputs)) {
             $errorOccured = true;
             $alertMessage = 'Veuillez remplir tous les champs.';
         }
 
-        // Check if password and verification match
         if ($_POST['mdp'] !== $_POST['verification']) {
             $errorOccured = true;
             $alertMessage = 'Le mot de passe et la confirmation ne correspondent pas.';
@@ -70,7 +68,6 @@ if ($_SESSION["connexion"] == true) {
             $valuesInputed[$keys[$i]] = trojan($_POST[$inputs[$i]]);
         }
 
-
         if (!$errorOccured) {
 
             $servername = "localhost";
@@ -78,16 +75,14 @@ if ($_SESSION["connexion"] == true) {
             $passwordDB = "root";
             $db = "event_feedback";
 
-
             $conn = mysqli_connect($servername, $usernameDB, $passwordDB, $db);
 
             if (!$conn) {
-
                 die("Connection failed: " . mysqli_connect_error());
             }
 
-            $sql = "INSERT INTO users (email, password)
-            VALUES ('" . $valuesInputed['email'] . "','" .  $valuesInputed['mdp'] = md5($_POST['mdp']) . "');";
+            $sql = "INSERT INTO users (prenom, email, password)
+            VALUES ('" . $valuesInputed['prenom'] . "','" . $valuesInputed['email'] . "','" .  $valuesInputed['mdp'] = md5($_POST['mdp']) . "');";
 
             if (mysqli_query($conn, $sql)) {
                 header("Location: ../index.php");
@@ -98,8 +93,8 @@ if ($_SESSION["connexion"] == true) {
             mysqli_close($conn);
         }
     }
-
 ?>
+
 <body>
     <div class="container-fluid">
         <div class="row">
@@ -116,6 +111,8 @@ if ($_SESSION["connexion"] == true) {
         if ($_SERVER['REQUEST_METHOD'] != 'POST' || $errorOccured == true) {
         ?>
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="">
+
+                <input type="text" class="form-control mb-3" name="prenom" id="prenom" placeholder="Prénom" value="<?php echo $valuesInputed['prenom']; ?>">
 
                 <input type="text" class="form-control mb-3" name="email" id="email" placeholder="Email" value="<?php echo $valuesInputed['email']; ?>">
 

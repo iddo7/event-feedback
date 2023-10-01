@@ -33,7 +33,7 @@ if ($_SESSION["connexion"] == true) {
         </div>
         <div class="row d-flex justify-content-center">
             <div class="col-4 me-5">
-                <a href="#" class="card shadow p-5 text-center">
+                <a href="php/users.php" class="card shadow p-5 text-center">
                     <i class="choose-icon fa-solid fa-users-gear mb-3"></i>
                     <h2>Utilisateurs</h2>
                 </a>
