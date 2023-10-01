@@ -28,21 +28,21 @@ if ($_SESSION["connexion"] == true) {
 ?>
 
 <div class="container screen-center">
-    <div class="row text-center cercle-x abc">
-        <div class="col-sm-4 col-md-4 abc">
-            <a href="#"> <!-- increment-vote.php?type=<?php echo $voteType ?>&id=<?php echo $eventId ?>&feedback=green -->
-                <i id="icon-vote-green" class="icon-vote fa-solid fa-circle"></i>
-            </a>
+    <div class="row text-center cercle-x">
+        <div class="col-sm-4 col-md-4">
+            <!-- increment-vote.php?type=<?php echo $voteType ?>&id=<?php echo $eventId ?>&feedback=green -->
+            <i id="icon-vote-green" class="icon-vote fa-solid fa-circle"></i>
+            
         </div>
-        <div class="col-sm-4 col-md-4 abc">
-            <a href="#"> <!-- increment-vote.php?type=<?php echo $voteType ?>&id=<?php echo $eventId ?>&feedback=yellow -->
-                <i id="icon-vote-yellow" class="icon-vote fa-solid fa-circle"></i>
-            </a>
+        <div class="col-sm-4 col-md-4">
+            <!-- increment-vote.php?type=<?php echo $voteType ?>&id=<?php echo $eventId ?>&feedback=yellow -->
+            <i id="icon-vote-yellow" class="icon-vote fa-solid fa-circle"></i>
+            
         </div>
-        <div class="col-sm-4 col-md-4 abc">
-            <a href="#"> <!-- increment-vote.php?type=<?php echo $voteType ?>&id=<?php echo $eventId ?>&feedback=red -->
-                <i id="icon-vote-red" class="icon-vote fa-solid fa-circle"></i>
-            </a>
+        <div class="col-sm-4 col-md-4">
+            <!-- increment-vote.php?type=<?php echo $voteType ?>&id=<?php echo $eventId ?>&feedback=red -->
+            <i id="icon-vote-red" class="icon-vote fa-solid fa-circle"></i>
+            
         </div>
     </div>
 </div>
