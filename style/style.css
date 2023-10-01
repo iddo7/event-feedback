@@ -157,3 +157,11 @@ ul {
 .shadow {
     box-shadow: var(--main-shadow);
 }
+
+.icon-vote {
+    transform: translate(-50%, -0%);
+}
+
+.abc {
+    transform: translate(50%, -0%);
+}

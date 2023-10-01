@@ -28,20 +28,20 @@ if ($_SESSION["connexion"] == true) {
 ?>
 
 <div class="container screen-center">
-    <div class="row text-center cercle-x">
-        <div class="col-sm-4 col-md-4">
-            <a href="increment-vote.php?type=<?php echo $voteType ?>&id=<?php echo $eventId ?>&feedback=green">
-                <i class="fa-solid fa-circle text-success"></i>
+    <div class="row text-center cercle-x abc">
+        <div class="col-sm-4 col-md-4 abc">
+            <a href="#"> <!-- increment-vote.php?type=<?php echo $voteType ?>&id=<?php echo $eventId ?>&feedback=green -->
+                <i id="icon-vote-green" class="icon-vote fa-solid fa-circle"></i>
             </a>
         </div>
-        <div class="col-sm-4 col-md-4">
-            <a href="increment-vote.php?type=<?php echo $voteType ?>&id=<?php echo $eventId ?>&feedback=yellow">
-                <i class="fa-solid fa-circle text-warning"></i>
+        <div class="col-sm-4 col-md-4 abc">
+            <a href="#"> <!-- increment-vote.php?type=<?php echo $voteType ?>&id=<?php echo $eventId ?>&feedback=yellow -->
+                <i id="icon-vote-yellow" class="icon-vote fa-solid fa-circle"></i>
             </a>
         </div>
-        <div class="col-sm-4 col-md-4">
-            <a href="increment-vote.php?type=<?php echo $voteType ?>&id=<?php echo $eventId ?>&feedback=red">
-                <i class="fa-solid fa-circle text-danger"></i>
+        <div class="col-sm-4 col-md-4 abc">
+            <a href="#"> <!-- increment-vote.php?type=<?php echo $voteType ?>&id=<?php echo $eventId ?>&feedback=red -->
+                <i id="icon-vote-red" class="icon-vote fa-solid fa-circle"></i>
             </a>
         </div>
     </div>
@@ -73,5 +73,7 @@ else {
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="../scripts/anime.min.js"></script>
+<script src="../scripts/handleVote.js"></script>
 </body>
 </html>
