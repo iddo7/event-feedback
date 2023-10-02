@@ -27,6 +27,14 @@ if ($_SESSION["connexion"] == true) {
     $voteType = $_GET["type"];
 ?>
 
+<div class="container readyForVote-container">
+    <div class="row text-center">
+        <div class="col-12">
+            <h1 class="text-white readyForVote-text">Comment était votre expérience?</h1>
+        </div>
+    </div>
+</div>
+
 <div class="container screen-center">
     <div class="row text-center">
         <div class="col-sm-4 col-md-4">
