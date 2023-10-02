@@ -157,12 +157,7 @@ session_start();
                         mysqli_close($conn);
                         ?>
                     </select>
-
-                    <!--
-                    <input type="number" class="form-control mb-3" name="departementId" id="departementId" placeholder="Département" 
-                        value="<?php echo $valuesInputed['departementId']; ?>">
-                    -->
-
+                    
                     <textarea class="form-control mb-3" name="description" id="description" 
                     placeholder="Description" rows="4" style="max-height: 200px;" maxlength="500"><?php echo $valuesInputed['description']; ?></textarea>
 
