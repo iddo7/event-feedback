@@ -2,7 +2,7 @@
 let buttonVoteGreen = document.querySelector("#icon-vote-green")
 let buttonVoteYellow = document.querySelector("#icon-vote-yellow")
 let buttonVoteRed = document.querySelector("#icon-vote-red")
-let messageDisplay = document.querySelector("#message")
+let messageDisplay = document.querySelector(".message")
 let allButtons = [buttonVoteGreen, buttonVoteYellow, buttonVoteRed]
 
 let colorGreen = '#008a64';
