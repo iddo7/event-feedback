@@ -81,6 +81,7 @@ if ($_SESSION["connexion"] == true) {
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
             }
+            $conn->query('SET NAMES utf8');
 
             $sql = "INSERT INTO users (prenom, email, password)
             VALUES ('" . $valuesInputed['prenom'] . "','" . $valuesInputed['email'] . "','" .  $valuesInputed['mdp'] = md5($_POST['mdp']) . "');";

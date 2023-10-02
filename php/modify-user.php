@@ -76,6 +76,7 @@ if ($_SESSION["connexion"] == true) {
             if (!$connection) {
                 die("Connection failed: " . mysqli_connect_error());
             }
+            $connection->query('SET NAMES utf8');
 
             $prenom = $valuesInputed['prenom'];
             $email = $valuesInputed['email'];
