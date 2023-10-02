@@ -76,6 +76,7 @@ if ($_SESSION["connexion"] == true) {
             if (!$connection) {
                 die("Connection failed: " . mysqli_connect_error());
             }
+            $connection->query('SET NAMES utf8');
 
             $updatedEvent_name = $valuesInputed['name'];
             $updatedEvent_description = $valuesInputed['description'];
@@ -129,7 +130,7 @@ if ($_SESSION["connexion"] == true) {
                 if ($connection->connect_error) {
                     die("Connection failed: " . $connection->connect_error);
                 }
-                $conn->query('SET NAMES utf8');
+                $connection->query('SET NAMES utf8');
             
                 $eventId = isset($_GET["id"]) ? $_GET["id"] : $_POST["hiddenId"];
                 $selectAllQuery = "SELECT * FROM events WHERE id=" . $eventId;

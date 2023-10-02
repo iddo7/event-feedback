@@ -51,7 +51,7 @@ session_start();
             if ($connection->connect_error) {
                 die("Connection failed: " . $connection->connect_error);
             }
-            $conn->query('SET NAMES utf8');
+            $connection->query('SET NAMES utf8');
 
             $selectUserQuery = "SELECT * FROM users WHERE email='$username' AND password='$password'";
             $result = $connection->query($selectUserQuery);
