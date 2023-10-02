@@ -46,6 +46,7 @@ if ($_SESSION["connexion"] == true) {
         </div>
     </div>
 </div>
+<h1 id="message" class="text-white">Merci pour votre vote</h1>
 
 <div class="m-5 fleche-retour">
     <a href="event-info.php?id=<?php echo $eventId ?>">

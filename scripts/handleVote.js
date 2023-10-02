@@ -2,17 +2,17 @@
 let buttonVoteGreen = document.querySelector("#icon-vote-green")
 let buttonVoteYellow = document.querySelector("#icon-vote-yellow")
 let buttonVoteRed = document.querySelector("#icon-vote-red")
+let messageDisplay = document.querySelector("#message")
 let allButtons = [buttonVoteGreen, buttonVoteYellow, buttonVoteRed]
 
 let colorGreen = '#008a64';
 let colorYellow = '#ffc45d';
 let colorRed = '#df2350';
+let colorDarker = '#363636';
 
 let onClickGreen = () => { handleClick('green') }
 let onClickYellow = () => { handleClick('yellow') }
 let onClickRed = () => { handleClick('red') }
-
-
 
 
 
@@ -41,10 +41,16 @@ function handleClick(voteType) {
             // Animation
             let greenVoteAnimation = anime.timeline({
                 easing: 'cubicBezier(0, .7, .2, 1)',
-                duration: 500
+                duration: 500,
             })
             .add({ targets: 'body', backgroundColor: colorGreen }, 0)
             .add({ targets: [buttonVoteYellow, buttonVoteRed], color: colorGreen }, 0)
+            .add({ 
+                targets: messageDisplay, 
+                opacity: 1,
+                easing: 'easeInOutQuad'
+            }, '+= 50')
+            .add({ targets: 'body', backgroundColor: colorGreen })
             
             break;
 
