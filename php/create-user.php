@@ -11,7 +11,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/scss/compiled-variables.css">
     <link rel="stylesheet" href="../style/style.css">
-    <title>create-user</title>
+    <title>event-feedback</title>
 </head>
 
 <?php
@@ -99,7 +99,7 @@ if ($_SESSION["connexion"] == true) {
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 text-center mt-5">
-                <span class="logo">Create user</span>
+                <span class="logo">event-feedback</span>
             </div>
         </div>
     </div>

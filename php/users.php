@@ -42,7 +42,7 @@ if ($_SESSION["connexion"] == true) {
         <div class="p-5 bg-darker">
             <div class="row">
                 <div class="col-10">
-                    <h1>Users</h1>
+                    <h1>Usagers</h1>
                 </div>
                 <div class="col-2 d-flex justify-content-end h-100">
                     <button class="btn btn-primary vote-btn btn-lg">
