@@ -43,6 +43,7 @@ if ($_SESSION["connexion"] == true) {
         "description" => "",
         "img" => "",
         "departementId" => "",
+        "place" => "", // Ajout de la valeur "place"
     );
     $errorOccured = false;
     $alertMessage = '';
@@ -52,7 +53,7 @@ if ($_SESSION["connexion"] == true) {
     // FORM WAS SUBMITTED
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        $inputs = array("name", "date", "description", "img", "departementId");
+        $inputs = array("name", "date", "description", "img", "departementId", "place"); // Ajout de "place" ici
 
         if (anyIsEmpty($inputs)) {
             $errorOccured = true;
@@ -84,7 +85,8 @@ if ($_SESSION["connexion"] == true) {
             $updatedEvent_date = $valuesInputed['date'];
             $updatedEvent_img = $valuesInputed['img'];
             $updatedEvent_departementId = $valuesInputed['departementId'];
-            $updateQuery = "UPDATE events SET name='{$updatedEvent_name}', description=\"{$updatedEvent_description}\", date='{$updatedEvent_date}', img='{$updatedEvent_img}', departementId={$updatedEvent_departementId} WHERE id={$eventId}";
+            $updatedEvent_place = $valuesInputed['place']; // Récupération de la valeur de "place"
+            $updateQuery = "UPDATE events SET name='{$updatedEvent_name}', description=\"{$updatedEvent_description}\", date='{$updatedEvent_date}', img='{$updatedEvent_img}', departementId={$updatedEvent_departementId}, place='{$updatedEvent_place}' WHERE id={$eventId}"; // Ajout de "place" dans la requête SQL
 
             echo $updateQuery;
 
@@ -147,6 +149,7 @@ if ($_SESSION["connexion"] == true) {
                         "date" => $row["date"],
                         "img" => $row["img"],
                         "departementId" => $row["departementId"],
+                        "place" => $row["place"], // Récupération de la valeur de "place"
                     );
                 }
                 $errorOccured = false;
@@ -163,6 +166,8 @@ if ($_SESSION["connexion"] == true) {
                         </div>
                     </div>
 
+                    <input type="text" class="form-control mb-3" name="place" id="lien" placeholder="place" 
+                    value="<?php echo $valuesInputed['place']; ?>">
 
                     <input type="text" class="form-control mb-3" name="img" id="img" placeholder="URL de l'image" 
                     value="<?php echo $valuesInputed['img']; ?>">
