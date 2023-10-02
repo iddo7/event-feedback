@@ -56,6 +56,7 @@ if ($_SESSION["connexion"] == true) {
             if ($connection->connect_error) {
                 die("Connection failed: " . $connection->connect_error);
             }
+            $conn->query('SET NAMES utf8');
 
         $connection->close();
         }

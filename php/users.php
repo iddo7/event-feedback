@@ -28,7 +28,6 @@ if ($_SESSION["connexion"] == true) {
         die("Connection failed: " . $connection->connect_error);
     }
 
-
     $connection->query('SET NAMES utf8');
 
     $selectAllQuery = "SELECT * FROM users";

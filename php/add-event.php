@@ -74,10 +74,9 @@ session_start();
             $conn = mysqli_connect($servername, $usernameDB, $passwordDB, $db);
 
             if (!$conn) {
-
                 die("Connection failed: " . mysqli_connect_error());
-
             }
+            $conn->query('SET NAMES utf8');
 
             $sql = "INSERT INTO events (name, date, description, img, departementId)
             VALUES ('" . $valuesInputed['name'] . "','" . $valuesInputed['date'] . "','" . $valuesInputed['description'] . "','" . $valuesInputed['img'] . "','" . $valuesInputed['departementId'] . "');";        
@@ -111,17 +110,53 @@ session_start();
         ?>
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" class="">
 
-                    <input type="text" class="form-control mb-3" name="name" id="name" placeholder="Nom de l'évènement" 
-                        value="<?php echo $valuesInputed['name']; ?>">
-
-                    <input type="date" class="form-control mb-3" name="date" id="date" placeholder="" 
-                    value="<?php echo $valuesInputed['date']; ?>">
+                    <div class="row">
+                        <div class="col-6">
+                            <input type="text" class="form-control mb-3" name="name" id="name" placeholder="Nom de l'évènement" value="<?php echo $valuesInputed['name']; ?>">
+                        </div>
+                        <div class="col-6">
+                            <input type="date" class="form-control mb-3" name="date" id="date" value="<?php echo $valuesInputed['date']; ?>">
+                        </div>
+                    </div>
 
                     <input type="text" class="form-control mb-3" name="img" id="img" placeholder="URL de l'image" 
                     value="<?php echo $valuesInputed['img']; ?>">
 
+                    <select class="form-select mb-3" aria-label="Default select example" id="departementId" name="departementId">
+                        <option value="-1" selected>Choisissez un département</option>
+
+                        <?php
+                        // Database connection
+                        $servername = "localhost";
+                        $usernameDB = "root";
+                        $passwordDB = "root";
+                        $db = "event_feedback";
+                        $conn = mysqli_connect($servername, $usernameDB, $passwordDB, $db);
+
+                        if (!$conn) {
+                            die("Connection failed: " . mysqli_connect_error());
+                        }
+                        $conn->query('SET NAMES utf8');
+
+                        // Query to fetch departments
+                        $query = "SELECT `id`, `name` FROM `departements`";
+                        $result = mysqli_query($conn, $query);
+
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo '<option value="' . $row["id"] . '">' . $row["name"] . '</option>';
+                            }
+                        }
+
+                        // Close the database connection
+                        mysqli_close($conn);
+                        ?>
+                    </select>
+
+                    <!--
                     <input type="number" class="form-control mb-3" name="departementId" id="departementId" placeholder="Département" 
                         value="<?php echo $valuesInputed['departementId']; ?>">
+                    -->
 
                     <textarea class="form-control mb-3" name="description" id="description" 
                     placeholder="Description" rows="4" style="max-height: 200px;" maxlength="500"><?php echo $valuesInputed['description']; ?></textarea>
