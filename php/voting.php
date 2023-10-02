@@ -28,7 +28,7 @@ if ($_SESSION["connexion"] == true) {
 ?>
 
 <div class="container screen-center">
-    <div class="row text-center cercle-x">
+    <div class="row text-center">
         <div class="col-sm-4 col-md-4">
             <i id="icon-vote-green" class="icon-vote fa-solid fa-circle"></i>
         </div>
@@ -49,7 +49,7 @@ if ($_SESSION["connexion"] == true) {
     </a>
 </div>
 <div class="fixed-bottom text-center mb-4">
-    <span class="display-vote-type">vote étudiant</span>
+    <span class="display-vote-type">Vote <?php echo ($_GET["type"]=='student') ? 'étudiant' : 'professionnel' ?></span>
 </div>
 
 <?php 
