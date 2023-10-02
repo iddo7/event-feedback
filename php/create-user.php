@@ -85,7 +85,7 @@ if ($_SESSION["connexion"] == true) {
             VALUES ('" . $valuesInputed['prenom'] . "','" . $valuesInputed['email'] . "','" .  $valuesInputed['mdp'] = md5($_POST['mdp']) . "');";
 
             if (mysqli_query($conn, $sql)) {
-                header("Location: ../index.php");
+                header("Location: users.php");
                 exit;
             } else {
                 echo "Error:" . $sql . "<br>" . mysqli_error($conn);

@@ -46,8 +46,8 @@ if ($_SESSION["connexion"] == true) {
                 </div>
                 <div class="col-2 d-flex justify-content-end h-100">
                     <button class="btn btn-primary vote-btn btn-lg">
-                        <a href="add-event.php">
-                            <i class="fa-solid fa-calendar-plus"></i>
+                        <a href="create-user.php">
+                            <i class="fa-solid fa-user-plus"></i>
                             Ajouter
                         </a>
                     </button>
@@ -71,14 +71,14 @@ if ($_SESSION["connexion"] == true) {
                                 <div class="row">
                                     <div class="col-4">
                                         <!-- Edit Button -->
-                                        <a href="modify-event.php?id=<?php echo $row["id"] ?>">
+                                        <a href="modify-user.php?id=<?php echo $row["id"] ?>">
                                             <i class="event-card-action-icon fa-solid fa-pen-to-square"></i>
                                         </a>
                                     </div>
                                     <div class="col-4">
                                         <!-- Delete Button 
                                         -->
-                                        <a href="delete-event.php?id=<?php echo $row["id"] ?>">
+                                        <a href="delete-user.php?id=<?php echo $row["id"] ?>">
                                             <i class="event-card-action-icon fa-solid fa-trash"></i>
                                         </a>
                                     </div>
