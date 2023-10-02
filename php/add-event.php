@@ -123,7 +123,10 @@ session_start();
                     value="<?php echo $valuesInputed['img']; ?>">
 
                     <select class="form-select mb-3" aria-label="Default select example" id="departementId" name="departementId">
-                        <option value="-1" selected>Choisissez un département</option>
+                        <?php 
+                            $selectedDepartmentId = $valuesInputed['departementId'];
+                        ?>
+                        <option value="-1" <?php echo ($selectedDepartmentId == -1) ? 'selected' : ''; ?>>Choisissez un département</option>
 
                         <?php
                         // Database connection
@@ -144,7 +147,9 @@ session_start();
 
                         if (mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
-                                echo '<option value="' . $row["id"] . '">' . $row["name"] . '</option>';
+                                $selectedAttribute = ($selectedDepartmentId == $row["id"]) ? 'selected' : '';
+
+                                echo '<option value="' . $row["id"] . '" ' . $selectedAttribute . '>' . $row["name"] . '</option>';
                             }
                         }
 
