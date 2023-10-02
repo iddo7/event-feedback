@@ -1,6 +1,8 @@
 <?php
 session_start();
 ?>
+<?php include 'navbar.php'; ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +15,7 @@ session_start();
     <link rel="stylesheet" href="../style/style.css">
     <title>Event Feedback</title>
 </head>
+
 <?php 
 if ($_SESSION["connexion"] == true) {
     $servername = "localhost";
@@ -20,10 +23,8 @@ if ($_SESSION["connexion"] == true) {
     $password = "root";
     $db = "event_feedback";
 
-    // Create connection
     $connection = new mysqli($servername, $username, $password, $db);
 
-    // Check connection
     if ($connection->connect_error) {
         die("Connection failed: " . $connection->connect_error);
     }
@@ -35,7 +36,8 @@ if ($_SESSION["connexion"] == true) {
         echo "0 results";
     }
 ?>
-<body>
+
+<body >
     <div class="container-fluid p-0 mb-5">
         <div class="p-5 bg-darker">
             <div class="row">
@@ -68,14 +70,11 @@ if ($_SESSION["connexion"] == true) {
                             <div class="col-2 d-inline-flex align-items-center justify-content-center">
                                 <div class="row">
                                     <div class="col-4">
-                                        <!-- Edit Button -->
                                         <a href="modify-user.php?id=<?php echo $row["id"] ?>">
                                             <i class="event-card-action-icon fa-solid fa-pen-to-square"></i>
                                         </a>
                                     </div>
                                     <div class="col-4">
-                                        <!-- Delete Button 
-                                        -->
                                         <a href="delete-user.php?id=<?php echo $row["id"] ?>">
                                             <i class="event-card-action-icon fa-solid fa-trash"></i>
                                         </a>
@@ -87,11 +86,8 @@ if ($_SESSION["connexion"] == true) {
 
             <?php } ?>
             </div>
-
-            </div>
         </div>
     </div>
-
 
 
 
@@ -103,6 +99,6 @@ else {
 }
 ?>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

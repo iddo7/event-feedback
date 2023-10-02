@@ -1,6 +1,7 @@
 <?php
 session_start();
 ?>
+<?php include 'navbar.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -111,7 +112,7 @@ if ($_SESSION["connexion"] == true) {
         </div>
     </div>
     <div class="p-4 screen-center col-12 col-md-6 col-xl-4">
-        <h1 class="text-center">Modifier évènement</h1>
+        <h1 class="text-center">Modifier usager</h1>
         <hr>
 
         <?php 
