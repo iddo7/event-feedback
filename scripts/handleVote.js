@@ -40,6 +40,7 @@ function handleClick(voteType) {
             buttonVoteYellow.removeEventListener('click', onClickYellow)
             buttonVoteRed.removeEventListener('click', onClickRed)
 
+            changeColor(messageDisplay, '#FFFFFF')
             show(messageDisplay)
 
             // "Non-Clickable" cursor
@@ -72,6 +73,7 @@ function handleClick(voteType) {
                 buttonVoteYellow.removeEventListener('click', onClickYellow)
                 buttonVoteRed.removeEventListener('click', onClickRed)
 
+                changeColor(messageDisplay, colorDarker)
                 show(messageDisplay)
 
                 // "Non-Clickable" cursor
@@ -104,6 +106,7 @@ function handleClick(voteType) {
             buttonVoteYellow.removeEventListener('click', onClickYellow)
             buttonVoteRed.removeEventListener('click', onClickRed)
 
+            changeColor(messageDisplay, '#FFFFFF')
             show(messageDisplay)
 
             // "Non-Clickable" cursor
