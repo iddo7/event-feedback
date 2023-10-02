@@ -49,6 +49,7 @@ INSERT INTO `departements` (`id`, `name`, `description`) VALUES
 CREATE TABLE `events` (
   `id` int(11) NOT NULL,
   `name` varchar(350) NOT NULL,
+  `place` varchar(150) DEFAULT NULL,
   `description` varchar(1000) NOT NULL,
   `date` date NOT NULL,
   `img` varchar(1060) NOT NULL,
