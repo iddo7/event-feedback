@@ -27,32 +27,25 @@ if ($_SESSION["connexion"] == true) {
     $voteType = $_GET["type"];
 ?>
 
-<div class="container readyForVote-container">
-    <div class="row text-center">
-        <div class="col-12">
-            <h1 class="text-white readyForVote-text">Comment était votre expérience?</h1>
-        </div>
-    </div>
-</div>
-
 <div class="container screen-center">
     <div class="row text-center">
         <div class="col-sm-4 col-md-4">
-            <i id="icon-vote-green" class="icon-vote fa-solid fa-circle"></i>
+            <i id="icon-vote-red" class="icon-vote fa-solid fa-circle"></i>
         </div>
         <div class="col-sm-4 col-md-4">
             <i id="icon-vote-yellow" class="icon-vote fa-solid fa-circle"></i>
         </div>
         <div class="col-sm-4 col-md-4">
-            <i id="icon-vote-red" class="icon-vote fa-solid fa-circle"></i>
+            <i id="icon-vote-green" class="icon-vote fa-solid fa-circle"></i>
         </div>
     </div>
 </div>
 
-<h1 class="message">Merci pour votre vote</h1>
+<h1 id="welcome-message" class="message text-center">Comment était votre expérience?</h1>
+<h1 id="thanks-message" class="message text-center">Merci pour votre vote</h1>
 
 <div class="m-5 fleche-retour">
-    <a href="event-info.php?id=<?php echo $eventId ?>">
+    <a class="back-btn" href="event-info.php?id=<?php echo $eventId ?>">
         <i class="fa-sharp fa-solid fa-arrow-left"></i>
     </a>
 </div>

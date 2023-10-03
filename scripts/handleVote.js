@@ -1,9 +1,12 @@
+/* Variables */
 
 let buttonVoteGreen = document.querySelector("#icon-vote-green")
 let buttonVoteYellow = document.querySelector("#icon-vote-yellow")
 let buttonVoteRed = document.querySelector("#icon-vote-red")
-let messageDisplay = document.querySelector(".message")
+let welcomeMessage = document.querySelector("#welcome-message")
+let thanksMessage = document.querySelector("#thanks-message")
 let voteTypeDisplay = document.querySelector(".display-vote-type")
+let backBtn = document.querySelector(".back-btn")
 let allButtons = [buttonVoteGreen, buttonVoteYellow, buttonVoteRed]
 
 voteAs = getQueryParam('type')
@@ -30,21 +33,16 @@ buttonVoteGreen.addEventListener('click', onClickGreen)
 buttonVoteYellow.addEventListener('click', onClickYellow)
 buttonVoteRed.addEventListener('click', onClickRed)
 
+
+
+
+/* Functions */
+
 function handleClick(voteType) {
     switch (voteType) {
 
         case 'green':
-
-            // Removing Event Listeners
-            buttonVoteGreen.removeEventListener('click', onClickGreen)
-            buttonVoteYellow.removeEventListener('click', onClickYellow)
-            buttonVoteRed.removeEventListener('click', onClickRed)
-
-            changeColor(messageDisplay, '#FFFFFF')
-            show(messageDisplay)
-
-            // "Non-Clickable" cursor
-            changeCursors([buttonVoteGreen, buttonVoteYellow, buttonVoteRed], 'default')
+            animationPreparation()
 
             // Animation
             let greenVoteAnimation = anime.timeline({
@@ -54,30 +52,25 @@ function handleClick(voteType) {
                     redirectTo(`increment-vote.php?type=${voteAs}&id=${eventId}&feedback=${voteType}`)
                 }
             })
+            // Changing colors
             .add({ targets: 'body', backgroundColor: colorGreen }, 0)
             .add({ targets: [buttonVoteYellow, buttonVoteRed], color: colorGreen }, 0)
-            .add({ targets: voteTypeDisplay, opacity: 0 }, 0)
-            .add({ targets: messageDisplay, opacity: 1, easing: 'easeInOutQuad' }, '+= 25')
+            // Hiding elements
+            .add({ targets: [voteTypeDisplay, welcomeMessage, backBtn], opacity: 0 }, 0)
+            // Showing thanks message
+            .add({ targets: thanksMessage, opacity: 1, easing: 'easeInOutQuad' }, '+= 25')
+            // Going back to start state
             .add({ targets: 'body', backgroundColor: colorDarker }, delayBetweenVotesMs)
             .add({ targets: buttonVoteYellow, color: colorYellow }, delayBetweenVotesMs)
             .add({ targets: buttonVoteRed, color: colorRed }, delayBetweenVotesMs)
-            .add({ targets: voteTypeDisplay, opacity: 1 }, delayBetweenVotesMs)
-            .add({ targets: messageDisplay, opacity: 0, easing: 'easeInOutQuad' }, delayBetweenVotesMs - 500)
+            .add({ targets: [voteTypeDisplay, welcomeMessage, backBtn], opacity: 1 }, delayBetweenVotesMs)
+            .add({ targets: thanksMessage, opacity: 0, easing: 'easeInOutQuad' }, delayBetweenVotesMs - 500)
             break;
 
 
         case 'yellow':
-
-                // Removing Event Listeners
-                buttonVoteGreen.removeEventListener('click', onClickGreen)
-                buttonVoteYellow.removeEventListener('click', onClickYellow)
-                buttonVoteRed.removeEventListener('click', onClickRed)
-
-                changeColor(messageDisplay, colorDarker)
-                show(messageDisplay)
-
-                // "Non-Clickable" cursor
-                changeCursors([buttonVoteGreen, buttonVoteYellow, buttonVoteRed], 'default')
+                animationPreparation()
+                changeColor(thanksMessage, colorDarker)
 
                 // Animation
                 let yellowVoteAnimation = anime.timeline({
@@ -87,30 +80,24 @@ function handleClick(voteType) {
                         redirectTo(`increment-vote.php?type=${voteAs}&id=${eventId}&feedback=${voteType}`)
                     }
                 })
+                // Changing colors
                 .add({ targets: 'body', backgroundColor: colorYellow }, 0)
                 .add({ targets: [buttonVoteGreen, buttonVoteRed], color: colorYellow }, 0)
-                .add({ targets: voteTypeDisplay, opacity: 0 }, 0)
-                .add({ targets: messageDisplay, opacity: 1, easing: 'easeInOutQuad' }, '+= 25')
+                // Hiding elements
+                .add({ targets: [voteTypeDisplay, welcomeMessage, backBtn], opacity: 0 }, 0)
+                // Showing thanks message
+                .add({ targets: thanksMessage, opacity: 1, easing: 'easeInOutQuad' }, '+= 25')
+                // Going back to start state
                 .add({ targets: 'body', backgroundColor: colorDarker }, delayBetweenVotesMs)
                 .add({ targets: buttonVoteGreen, color: colorGreen }, delayBetweenVotesMs)
                 .add({ targets: buttonVoteRed, color: colorRed }, delayBetweenVotesMs)
-                .add({ targets: voteTypeDisplay, opacity: 1 }, delayBetweenVotesMs)
-                .add({ targets: messageDisplay, opacity: 0, easing: 'easeInOutQuad' }, delayBetweenVotesMs - 500)
+                .add({ targets: [voteTypeDisplay, welcomeMessage, backBtn], opacity: 1 }, delayBetweenVotesMs)
+                .add({ targets: thanksMessage, opacity: 0, easing: 'easeInOutQuad' }, delayBetweenVotesMs - 500)
                 break;
 
 
         case 'red':
-
-            // Removing Event Listeners
-            buttonVoteGreen.removeEventListener('click', onClickGreen)
-            buttonVoteYellow.removeEventListener('click', onClickYellow)
-            buttonVoteRed.removeEventListener('click', onClickRed)
-
-            changeColor(messageDisplay, '#FFFFFF')
-            show(messageDisplay)
-
-            // "Non-Clickable" cursor
-            changeCursors([buttonVoteGreen, buttonVoteYellow, buttonVoteRed], 'default')
+            animationPreparation()
 
             // Animation
             let redVoteAnimation = anime.timeline({
@@ -120,15 +107,19 @@ function handleClick(voteType) {
                     redirectTo(`increment-vote.php?type=${voteAs}&id=${eventId}&feedback=${voteType}`)
                 }
             })
+            // Changing colors
             .add({ targets: 'body', backgroundColor: colorRed }, 0)
             .add({ targets: [buttonVoteGreen, buttonVoteYellow], color: colorRed }, 0)
-            .add({ targets: voteTypeDisplay, opacity: 0 }, 0)
-            .add({ targets: messageDisplay, opacity: 1, easing: 'easeInOutQuad' }, '+= 25')
+            // Hiding elements
+            .add({ targets: [voteTypeDisplay, welcomeMessage, backBtn], opacity: 0 }, 0)
+            // Showing thanks message
+            .add({ targets: thanksMessage, opacity: 1, easing: 'easeInOutQuad' }, '+= 25')
+            // Going back to start state
             .add({ targets: 'body', backgroundColor: colorDarker }, delayBetweenVotesMs)
             .add({ targets: buttonVoteGreen, color: colorGreen }, delayBetweenVotesMs)
             .add({ targets: buttonVoteYellow, color: colorYellow }, delayBetweenVotesMs)
-            .add({ targets: voteTypeDisplay, opacity: 1 }, delayBetweenVotesMs)
-            .add({ targets: messageDisplay, opacity: 0, easing: 'easeInOutQuad' }, delayBetweenVotesMs - 500)
+            .add({ targets: [voteTypeDisplay, welcomeMessage, backBtn], opacity: 1 }, delayBetweenVotesMs)
+            .add({ targets: thanksMessage, opacity: 0, easing: 'easeInOutQuad' }, delayBetweenVotesMs - 500)
             break;
 
 
@@ -138,13 +129,28 @@ function handleClick(voteType) {
 
 
 function initialize() {
-    hide(messageDisplay)
+    hide(thanksMessage)
+    changeColor(welcomeMessage, 'rgb(215, 215, 215)')
+    changeColor(thanksMessage, 'white')
+
     changeColor(buttonVoteGreen, colorGreen)
     changeColor(buttonVoteYellow, colorYellow)
     changeColor(buttonVoteRed, colorRed)
 
     // "Clickable" cursor
    changeCursors([buttonVoteGreen, buttonVoteYellow, buttonVoteRed], 'pointer')
+}
+
+function animationPreparation() {
+    // Removing Event Listeners
+    buttonVoteGreen.removeEventListener('click', onClickGreen)
+    buttonVoteYellow.removeEventListener('click', onClickYellow)
+    buttonVoteRed.removeEventListener('click', onClickRed)
+
+    show(thanksMessage)
+
+    // "Non-Clickable" cursor
+    changeCursors([buttonVoteGreen, buttonVoteYellow, buttonVoteRed], 'default')
 }
 
 function changeColor(element, newColor) {
