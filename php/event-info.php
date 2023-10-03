@@ -109,9 +109,9 @@ if ($_SESSION["connexion"] == true) {
                 </div>
             </div>
             <div class="row p-3 text-center">
-                <div class="col-4 bg-success"><?php echo $valuesInputed["studentVotesGreen"] ?></div>
-                <div class="col-4 bg-warning"><?php echo $valuesInputed["studentVotesYellow"] ?></div>
-                <div class="col-4 bg-danger"><?php echo $valuesInputed["studentVotesRed"] ?></div>
+                <div class="col-12">
+                    <div id="columnchart_material" style="height: 30vw"></div>
+                </div>
             </div>
         </div>
 
@@ -144,6 +144,37 @@ if ($_SESSION["connexion"] == true) {
         </div>
     </div>
 </div>
+
+<!-- Charts Script -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['bar']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+          ['​', 'Rouge', 'Jaune', 'Vert'],
+          ['Votes', <?php echo $valuesInputed['studentVotesRed']; ?>, 
+                                                    <?php echo $valuesInputed['studentVotesYellow']; ?>, 
+                                                    <?php echo $valuesInputed['studentVotesGreen']; ?>],
+        ]);
+
+    var options = {
+      chart: {
+        title: 'Étudiants',
+        subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+      },
+      
+      colors: ['#df2350', '#ffc45d', '#008a64']
+    };
+
+    var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+    chart.draw(data, google.charts.Bar.convertOptions(options));
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 <?php 
 }
 }
@@ -152,6 +183,5 @@ else {
     exit;
 }
 ?>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
