@@ -16,10 +16,10 @@ session_start();
 </head>
 <?php 
 if ($_SESSION["connexion"] == true) {
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-    $db = "event_feedback";
+    $servername = "cours.cegep3r.info";
+    $username = "2236478";
+    $password = "2236478";
+    $db = "2236478-negreiros-isaac";
 
     // Create connection
     $connection = new mysqli($servername, $username, $password, $db);

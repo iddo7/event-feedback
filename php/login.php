@@ -40,10 +40,10 @@ session_start();
             $username = $_POST['username'];
             $password = md5($_POST['password'], false);            
 
-            $servername = "localhost";
-            $usernameDB = "root";
-            $passwordDB = "root";
-            $db = "event_feedback";
+            $servername = "cours.cegep3r.info";
+            $usernameDB = "2236478";
+            $passwordDB = "2236478";
+            $db = "2236478-negreiros-isaac";
 
             // Create connection
             $connection = new mysqli($servername, $usernameDB, $passwordDB, $db);
