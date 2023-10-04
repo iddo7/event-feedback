@@ -60,7 +60,7 @@ if ($_SESSION["connexion"] == true) {
         $errorOccured = false;
         $alertMessage = '';
 ?>
-<div class="container-fluid p-0">
+<div class="container-fluid p-0 mb-4">
     <div class="p-5 bg-darker">
         <div class="row mb-3 event-info-details">
             <div class="col-4 event-img" style="background: url('<?php echo $valuesInputed["img"] ?>')"></div>
@@ -98,38 +98,39 @@ if ($_SESSION["connexion"] == true) {
 
     </div>
 </div>
-<div class="container-fluid">
-    <div class="row p-5 d-flex justify-content-center">
-
-        <!-- Student Votes Section -->
-        <div class="card col-5 me-5 shadow">
-            <div class="row p-3">
-                <div class="col-12 p-0">
-                    <h2 class="m-0">Étudiants</h2>
-                </div>
-            </div>
-            <div class="row p-3 text-center">
-                <div class="col-12">
-                    <div id="columnchart_material" style="height: 30vw"></div>
-                </div>
-            </div>
-        </div>
+<div class="container">
+    <div class="row justify-content-center">
 
         <!-- Professional Votes Section -->
-        <div class="card col-5 shadow">
+        <div class="card col-11 col-md-10 col-lg-5 shadow m-4">
             <div class="row p-3">
                 <div class="col-12 p-0">
                     <h2 class="m-0">Professionels</h2>
                 </div>
             </div>
             <div class="row p-3 text-center">
-                <div class="col-4 bg-success"><?php echo $valuesInputed["professionalVotesGreen"] ?></div>
-                <div class="col-4 bg-warning"><?php echo $valuesInputed["professionalVotesYellow"] ?></div>
-                <div class="col-4 bg-danger"><?php echo $valuesInputed["professionalVotesRed"] ?></div>
+                <div class="col-12 p-0">
+                    <div id="professional-chart" style="height: 35vh"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student Votes Section -->
+        <div class="card col-11 col-md-10 col-lg-5 shadow m-4">
+            <div class="row p-3">
+                <div class="col-12 p-0">
+                    <h2 class="m-0">Étudiants</h2>
+                </div>
+            </div>
+            <div class="row p-3 text-center">
+                <div class="col-12 p-0">
+                    <div id="student-chart" style="height: 35vh"></div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
 <div class="container">
     <div class="row d-flex justify-content-center">
         <div class="col-2">
@@ -149,29 +150,49 @@ if ($_SESSION["connexion"] == true) {
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
   google.charts.load('current', {'packages':['bar']});
-  google.charts.setOnLoadCallback(drawChart);
 
-  function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-          ['​', 'Rouge', 'Jaune', 'Vert'],
-          ['Votes', <?php echo $valuesInputed['studentVotesRed']; ?>, 
+  google.charts.setOnLoadCallback(drawStudentChart);
+  google.charts.setOnLoadCallback(drawProfessionalChart);
+
+    // Student Chart
+    function drawStudentChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['', 'Mauvaise', 'Neutre', 'Bonne'],
+            ['Expérience', <?php echo $valuesInputed['studentVotesRed']; ?>, 
                                                     <?php echo $valuesInputed['studentVotesYellow']; ?>, 
                                                     <?php echo $valuesInputed['studentVotesGreen']; ?>],
         ]);
+        var options = {
+            chart: {
+                subtitle: 'Expérience des étudiants',
+            },
+            colors: ['#df2350', '#ffc45d', '#008a64']
+        };
 
-    var options = {
-      chart: {
-        title: 'Étudiants',
-        subtitle: 'Sales, Expenses, and Profit: 2014-2017',
-      },
-      
-      colors: ['#df2350', '#ffc45d', '#008a64']
-    };
+        var chart = new google.charts.Bar(document.getElementById('student-chart'));
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
 
-    var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+    // Professional Chart
+    function drawProfessionalChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['', 'Mauvaise', 'Neutre', 'Bonne'],
+            ['Expérience', <?php echo $valuesInputed['professionalVotesRed']; ?>, 
+                                                    <?php echo $valuesInputed['professionalVotesYellow']; ?>, 
+                                                    <?php echo $valuesInputed['professionalVotesGreen']; ?>],
+        ]);
+        var options = {
+            chart: {
+                subtitle: 'Expérience des professionels',
+            },
+            colors: ['#df2350', '#ffc45d', '#008a64']
+        };
 
-    chart.draw(data, google.charts.Bar.convertOptions(options));
-  }
+        var chart = new google.charts.Bar(document.getElementById('professional-chart'));
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
+
+
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
