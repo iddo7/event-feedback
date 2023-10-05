@@ -2,6 +2,7 @@
 session_start();
 ?>
 <?php include 'navbar.php'; ?>
+<?php include 'variables-db.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,16 +44,12 @@ if ($_SESSION["connexion"] == true) {
         }
 
         if (!$errorOccured) {
-            $username = $_POST['username'];
-            $password = md5($_POST['password'], false);            
+            $usernameX = $_POST['username'];
+            $passwordX = md5($_POST['password'], false);            
 
-            $servername = "localhost";
-            $usernameDB = "root";
-            $passwordDB = "root";
-            $db = "event_feedback";
 
             // Create connection
-            $connection = new mysqli($servername, $usernameDB, $passwordDB, $db);
+            $connection = new mysqli($servername, $username, $password, $db);
             // Check connection
             if ($connection->connect_error) {
                 die("Connection failed: " . $connection->connect_error);
