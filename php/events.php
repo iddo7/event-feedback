@@ -54,7 +54,7 @@ if ($_SESSION["connexion"] == true) {
     </div>
     <div class="container">
         <div class="row d-flex justify-content-center">
-            <div class="col-8">
+            <div class="col-md-10 col-xl-8">
 
             <?php while($row = $result->fetch_assoc()) { ?>
                 <?php $eventInfoLink = "event-info.php?id=" . $row["id"] ?>
@@ -77,7 +77,7 @@ if ($_SESSION["connexion"] == true) {
                                     </div>
                                     <div class="col-4">
                                         <!-- Edit Button -->
-                                        <a href="modify-event.php?id=<?php echo $row["id"] ?>">
+                                        <a href="modify-event.php?id=<?php echo $row["id"]?>&previousPage=events">
                                             <i class="event-card-action-icon fa-solid fa-pen-to-square"></i>
                                         </a>
                                     </div>

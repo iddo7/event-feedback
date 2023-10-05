@@ -7,7 +7,7 @@
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="../index.php">Accueil</span></a>
             <a class="nav-item nav-link" href="events.php">Évènements</a>
-            <a class="nav-item nav-link" href="users.php">Usagers</a>
+            <a class="nav-item nav-link" href="users.php">Utilisateurs</a>
             <a class="nav-item nav-link" href="logout.php">Se déconnecter</a>
         </div>
     </div>

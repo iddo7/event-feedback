@@ -41,7 +41,7 @@ if ($_SESSION["connexion"] == true) {
         <div class="p-5 bg-darker">
             <div class="row">
                 <div class="col-10">
-                    <h1>Usagers</h1>
+                    <h1>Utilisateurs</h1>
                 </div>
                 <div class="col-2 d-flex justify-content-end h-100">
                     <button class="btn btn-primary vote-btn btn-lg">
@@ -62,9 +62,13 @@ if ($_SESSION["connexion"] == true) {
                 <?php $eventInfoLink = "event-info.php?id=" . $row["id"] ?>
                     <div class="card shadow mb-4">
                         <div class="row m-0 p-3">
-                            <a class="col-7 event-card-infos">
-                                <h2 class=""><?php echo $row["prenom"] ?></h2>
-                            </a>
+                            <div class="col-3 event-card-infos">
+                                <h2 class="m-0"><?php echo $row["prenom"] ?></h2>
+                            </div>
+
+                            <div class="col-7 event-card-infos">
+                                <span><?php echo $row["email"] ?></span>
+                            </div>
 
                             <div class="col-2 d-inline-flex align-items-center justify-content-center">
                                 <div class="row">
