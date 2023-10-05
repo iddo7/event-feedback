@@ -20,7 +20,6 @@ session_start();
     $errorOccured = false;
     $alertMessage = '';
 
-
     // FORM WAS SUBMITTED
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -75,11 +74,10 @@ session_start();
                 $alertMessage = "Le nom d'usager et le mot de passe ne correspondent pas.";
             }
 
-        $connection->close();
+            $connection->close();
         }
     }
 
-    
     function anyIsEmpty($arrayOfInputs) {
         $result = false;
         foreach ($arrayOfInputs as $input) {
@@ -117,9 +115,11 @@ session_start();
         ?>
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" class="">
 
+                    <label for="username">Nom d'usager</label>
                     <input type="text" class="form-control mb-3" name="username" id="username" placeholder="Nom d'usager" 
                         value="<?php echo $valuesInputed['username']; ?>">
 
+                    <label for="password">Mot de passe</label>
                     <input type="password" class="form-control mb-3" name="password" id="password" placeholder="Mot de passe" 
                         value="<?php echo $valuesInputed['password']; ?>">
 
