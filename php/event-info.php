@@ -37,19 +37,21 @@ if ($_SESSION["connexion"] == true) {
         $connection->query('SET NAMES utf8');
     
         $eventId = isset($_GET["id"]) ? $_GET["id"] : $_POST["hiddenId"];
-        $selectAllQuery = "SELECT * FROM events WHERE id=" . $eventId;
+        $selectAllQuery = "SELECT events.*, departements.name AS departmentName FROM events 
+                  JOIN departements ON events.departementId = departements.id 
+                  WHERE events.id=" . $eventId;
         $result = $connection->query($selectAllQuery);
         if ($result->num_rows <= 0) {
             echo "0 results";
         }
-        while($row = $result->fetch_assoc()) {
+        while ($row = $result->fetch_assoc()) {
             $valuesInputed = array(
                 "name" => $row["name"],
                 "date" => $row["date"],
                 "place" => $row["place"],
                 "description" => $row["description"],
                 "img" => $row["img"],
-                "departementId" => $row["departementId"],
+                "departmentName" => $row["departmentName"], // Use department_name instead of departementId
                 "studentVotesGreen" => $row["studentVotesGreen"],
                 "studentVotesYellow" => $row["studentVotesYellow"],
                 "studentVotesRed" => $row["studentVotesRed"],
@@ -81,14 +83,14 @@ if ($_SESSION["connexion"] == true) {
                     </div>
                 </div>
                 <div class="row mb-4">
-                    <div class="col-12">
+                    <div class="col-md-9 col-xl-10">
                         <span class="small me-3"><?php echo $valuesInputed["date"] ?></span>
                         <span class="small me-3"><?php echo $valuesInputed["place"] ?></span>
-                        <span class="small me-3"><?php echo $valuesInputed["departementId"] ?></span>
+                        <span class="small me-3"><?php echo $valuesInputed["departmentName"] ?></span>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xl-10">
+                    <div class="col-md-9 col-xl-10">
                         <p><?php echo $valuesInputed["description"] ?></p>
                     </div>
                 </div>
@@ -133,7 +135,7 @@ if ($_SESSION["connexion"] == true) {
     </div>
 </div>
 
-<div class="container">
+<div class="container mb-5">
     <div class="row d-flex justify-content-center">
         <div class="col-2">
             <a href="modify-event.php?id=<?php echo $eventId ?>" class="w-100">
