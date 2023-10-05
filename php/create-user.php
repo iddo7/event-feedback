@@ -121,7 +121,7 @@ if ($_SESSION["connexion"] == true) {
 
                 <div class="row">
                     <div class="col-6">
-                        <a href="events.php">
+                        <a href="users.php">
                             <button type="button" class="btn btn-outline-danger w-100">Annuler</button>
                         </a>
                     </div>

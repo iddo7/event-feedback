@@ -105,7 +105,7 @@ if ($_SESSION["connexion"] == true) {
 
 <body>
     <div class="p-4 screen-center col-12 col-md-6 col-xl-4">
-        <h1 class="text-center">Modifier usager</h1>
+        <h1 class="text-center">Modifier utilisateur</h1>
         <hr>
 
         <?php 

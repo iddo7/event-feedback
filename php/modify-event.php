@@ -212,7 +212,16 @@ if ($_SESSION["connexion"] == true) {
 
                     <div class="row">
                         <div class="col-6">
-                            <a href="event-info.php?id=<?php echo $eventId; ?>">
+                            <?php 
+                                $previousPage = $_GET['previousPage'];
+                                if ($previousPage == 'eventInfo') {
+                                    $cancelLink = "event-info.php?id=${eventId}";
+                                }
+                                else if ($previousPage == 'events') {
+                                    $cancelLink = 'events.php';
+                                }
+                            ?>
+                            <a href="<?php echo $cancelLink; ?>">
                                 <button type="button" class="btn btn-outline-danger w-100">Annuler</button>
                             </a>
                         </div>
