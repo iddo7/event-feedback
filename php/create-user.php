@@ -13,6 +13,19 @@ session_start();
     <link rel="stylesheet" href="../style/scss/compiled-variables.css">
     <link rel="stylesheet" href="../style/style.css">
     <title>event-feedback</title>
+
+    <style>
+        .label {
+            opacity: 0;
+            transform: translateY(0);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .label.show {
+            opacity: 1;
+            transform: translateY(-0px);
+        }
+    </style>
 </head>
 
 <?php
@@ -32,9 +45,9 @@ function anyIsEmpty($arrayOfInputs)
 
 function trojan($data)
 {
-    $data = trim($data); 
-    $data = addslashes($data); 
-    $data = htmlspecialchars($data); 
+    $data = trim($data);
+    $data = addslashes($data);
+    $data = htmlspecialchars($data);
 
     return $data;
 }
@@ -42,7 +55,7 @@ function trojan($data)
 if ($_SESSION["connexion"] == true) {
 
     $valuesInputed = array(
-        "prenom" => "", 
+        "prenom" => "",
         "email" => "",
         "mdp" => "",
         "verification" => "",
@@ -98,6 +111,12 @@ if ($_SESSION["connexion"] == true) {
 ?>
 
 <body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center mt-5">
+            </div>
+        </div>
+    </div>
     <div class="p-4 screen-center col-12 col-md-6 col-xl-3">
         <h1 class="text-center">Créer utilisateur</h1>
         <hr>
@@ -107,13 +126,17 @@ if ($_SESSION["connexion"] == true) {
         ?>
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="">
 
-                <input type="text" class="form-control mb-3" name="prenom" id="prenom" placeholder="Prénom" value="<?php echo $valuesInputed['prenom']; ?>">
+                <label id="prenomLabel" class="label" for="prenom">Prénom</label>
+                <input type="text" class="form-control mb-2" name="prenom" id="prenom" placeholder="Prénom" value="<?php echo $valuesInputed['prenom']; ?>">
 
-                <input type="text" class="form-control mb-3" name="email" id="email" placeholder="Email" value="<?php echo $valuesInputed['email']; ?>">
+                <label id="emailLabel" class="label" for="email">Email</label>
+                <input type="text" class="form-control mb-2" name="email" id="email" placeholder="Email" value="<?php echo $valuesInputed['email']; ?>">
 
-                <input type="password" class="form-control mb-3" name="mdp" id="mdp" placeholder="Mot de passe" value="<?php echo $valuesInputed['mdp']; ?>">
+                <label id="mdpLabel" class="label" for="mdp">Mot de passe</label>
+                <input type="password" class="form-control mb-2" name="mdp" id="mdp" placeholder="Mot de passe" value="<?php echo $valuesInputed['mdp']; ?>">
 
-                <input type="password" class="form-control mb-3" name="verification" id="verification" placeholder="Confirmer">
+                <label id="verificationLabel" class="label" for="verification">Confirmer le mot de passe</label>
+                <input type="password" class="form-control mb-4" name="verification" id="verification" placeholder="Confirmer">
 
                 <p class="text-<?php echo $errorOccured == true ? "danger" : "success" ?>">
                     <?php echo $alertMessage; ?>
@@ -137,6 +160,37 @@ if ($_SESSION["connexion"] == true) {
         ?>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const prenomInput = document.getElementById('prenom');
+            const emailInput = document.getElementById('email');
+            const mdpInput = document.getElementById('mdp');
+            const verificationInput = document.getElementById('verification');
+
+            const prenomInputLabel = document.getElementById('prenomLabel');
+            const emailInputLabel = document.getElementById('emailLabel');
+            const mdpInputLabel = document.getElementById('mdpLabel');
+            const verificationInputLabel = document.getElementById('verificationLabel');
+
+            const inputs = [
+                { input: prenomInput, label: prenomInputLabel },
+                { input: emailInput, label: emailInputLabel },
+                { input: mdpInput, label: mdpInputLabel },
+                { input: verificationInput, label: verificationInputLabel }
+            ];
+
+            inputs.forEach(({ input, label }) => {
+                input.addEventListener('input', function() {
+                    if (input.value !== '') {
+                        label.classList.add('show');
+                    } else {
+                        label.classList.remove('show');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

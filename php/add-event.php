@@ -13,10 +13,22 @@ session_start();
     <link rel="stylesheet" href="../style/scss/compiled-variables.css">
     <link rel="stylesheet" href="../style/style.css">
     <title>Event Feedback</title>
+
+    <style>
+        .label {
+            opacity: 0;
+            transform: translateY(0);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .label.show {
+            opacity: 1;
+            transform: translateY(-20px);
+        }
+    </style>
 </head>
+
 <?php
-
-
 function anyIsEmpty($arrayOfInputs)
 {
     $result = false;
@@ -34,7 +46,7 @@ function trojan($data)
 {
     $data = trim($data); //Enleve les caractères invisibles
     $data = addslashes($data); //Mets des backslashs devant les ' et les  "
-    $data = htmlspecialchars($data); // Remplace les caractères spéciaux par leurs symboles comme ­< devient &lt;
+    $data = htmlspecialchars($data); // Remplace les caractères spéciaux par leurs symboles comme < devient &lt;
 
     return $data;
 }
@@ -95,8 +107,9 @@ if ($_SESSION["connexion"] == true) {
             mysqli_close($conn);
         }
     }
-
+}
 ?>
+
 <body>
     <div class="p-4 screen-center col-12 col-md-6 col-xl-4">
         <h1 class="text-center">Ajouter évènement</h1>
@@ -109,18 +122,23 @@ if ($_SESSION["connexion"] == true) {
 
                 <div class="row">
                     <div class="col-6">
-                        <input type="text" class="form-control mb-3" name="name" id="name" placeholder="Nom de l'évènement" value="<?php echo $valuesInputed['name']; ?>">
+                        <span id="nameLabel" class="label">Nom de l'évènement</span>
+                        <input type="text" class="form-control mb-2" name="name" id="name" placeholder="Nom de l'évènement" value="<?php echo $valuesInputed['name']; ?>">
                     </div>
                     <div class="col-6">
-                        <input type="date" class="form-control mb-3" name="date" id="date" value="<?php echo $valuesInputed['date']; ?>">
+                        <span id="dateLabel" class="label">Date</span>
+                        <input type="date" class="form-control mb-2" name="date" id="date" value="<?php echo $valuesInputed['date']; ?>">
                     </div>
                 </div>
 
-                <input type="text" class="form-control mb-3" name="place" id="place" placeholder="lieu" value="<?php echo $valuesInputed['place']; ?>">
+                <span id="placeLabel" class="label">Lieu</span>
+                <input type="text" class="form-control mb-2" name="place" id="place" placeholder="lieu" value="<?php echo $valuesInputed['place']; ?>">
 
-                <input type="text" class="form-control mb-3" name="img" id="img" placeholder="URL de l'image" value="<?php echo $valuesInputed['img']; ?>">
+                <span id="imgLabel" class="label">URL de l'image</span>
+                <input type="text" class="form-control mb-2" name="img" id="img" placeholder="URL de l'image" value="<?php echo $valuesInputed['img']; ?>">
 
-                <select class="form-select mb-3" aria-label="Default select example" id="departementId" name="departementId">
+                <span id="departementIdLabel" class="label">Département</span>
+                <select class="form-select mb-2" aria-label="Default select example" id="departementId" name="departementId">
                     <?php
                     $selectedDepartmentId = $valuesInputed['departementId'];
                     ?>
@@ -156,8 +174,8 @@ if ($_SESSION["connexion"] == true) {
                     ?>
                 </select>
 
-                <textarea class="form-control mb-3" name="description" id="description" placeholder="Description" rows="4" style="max-height: 200px;" maxlength="500"><?php echo $valuesInputed['description']; ?></textarea>
-
+                <span id="descriptionLabel" class="label">Description</span>
+                <textarea class="form-control mb-4" name="description" id="description" placeholder="Description" rows="4" style="max-height: 200px;" maxlength="500"><?php echo $valuesInputed['description']; ?></textarea>
 
                 <p class="text-<?php echo $errorOccured == true ? "danger" : "success" ?>">
                     <?php echo $alertMessage; ?>
@@ -174,7 +192,7 @@ if ($_SESSION["connexion"] == true) {
                     </div>
                 </div>
             </form>
-        <?php } } else {
+        <?php } else {
         header("Location: login.php");
         exit;
     }
@@ -182,6 +200,45 @@ if ($_SESSION["connexion"] == true) {
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nameInput = document.getElementById('name');
+            const dateInput = document.getElementById('date');
+            const placeInput = document.getElementById('place');
+            const imgInput = document.getElementById('img');
+            const departementIdInput = document.getElementById('departementId');
+            const descriptionInput = document.getElementById('description');
+
+            const nameInputLabel = document.getElementById('nameLabel');
+            const dateInputLabel = document.getElementById('dateLabel');
+            const placeInputLabel = document.getElementById('placeLabel');
+            const imgInputLabel = document.getElementById('imgLabel');
+            const departementIdInputLabel = document.getElementById('departementIdLabel');
+            const descriptionInputLabel = document.getElementById('descriptionLabel');
+
+            const inputs = [
+                { input: nameInput, label: nameInputLabel },
+                { input: dateInput, label: dateInputLabel },
+                { input: placeInput, label: placeInputLabel },
+                { input: imgInput, label: imgInputLabel },
+                { input: departementIdInput, label: departementIdInputLabel },
+                { input: descriptionInput, label: descriptionInputLabel }
+            ];
+
+            inputs.forEach(({ input, label }) => {
+                input.addEventListener('input', function() {
+                    if (input.value !== '') {
+                        label.classList.add('show');
+
+                    } else {
+                        label.classList.remove('show');
+                    }
+
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
