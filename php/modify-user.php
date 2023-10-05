@@ -5,6 +5,7 @@ include 'navbar.php';
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,32 +13,43 @@ include 'navbar.php';
     <link rel="stylesheet" href="../style/scss/compiled-variables.css">
     <link rel="stylesheet" href="../style/style.css">
     <title>Event Feedback</title>
+
+    <style>
+        .label {
+            opacity: 1;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+    </style>
 </head>
 
-<?php 
+<?php
 
-function anyIsEmpty($arrayOfInputs) {
+function anyIsEmpty($arrayOfInputs)
+{
     $result = false;
     foreach ($arrayOfInputs as $input) {
-        if ($input !== "mdp" && empty($_POST[$input])) {
+        if (empty($_POST[$input])) {
             $result = true;
             break;
         }
     }
+
     return $result;
 }
 
-function trojan($data){
+function trojan($data)
+{
     $data = trim($data);
     $data = addslashes($data);
     $data = htmlspecialchars($data);
+
     return $data;
 }
 
 if ($_SESSION["connexion"] == true) {
 
     $valuesInputed = array(
-        "prenom" => "", 
+        "prenom" => "",
         "email" => "",
         "mdp" => "",
     );
@@ -60,7 +72,6 @@ if ($_SESSION["connexion"] == true) {
             $valuesInputed[$keys[$i]] = trojan($_POST[$inputs[$i]]);
         }
 
-        // Only update the password if it's provided in the form
         if (!empty($_POST['mdp'])) {
             $valuesInputed['mdp'] = md5($_POST['mdp']);
         }
@@ -70,9 +81,9 @@ if ($_SESSION["connexion"] == true) {
             $username = "root";
             $password = "root";
             $db = "event_feedback";
-        
+
             $connection = mysqli_connect($servername, $username, $password, $db);
-        
+
             if (!$connection) {
                 die("Connection failed: " . mysqli_connect_error());
             }
@@ -81,20 +92,19 @@ if ($_SESSION["connexion"] == true) {
             $prenom = $valuesInputed['prenom'];
             $email = $valuesInputed['email'];
             $mdp = $valuesInputed['mdp'];
-            
+
             $updateQuery = "UPDATE users SET prenom='{$prenom}', email='{$email}'";
             if (!empty($_POST['mdp'])) {
                 $updateQuery .= ", password='{$mdp}'";
             }
             $updateQuery .= " WHERE id={$eventId}";
-            
+
             if ($connection->query($updateQuery) === TRUE) {
-                $alertMessage = "L'ajout s'est bien produit";
+                $alertMessage = "La mise à jour s'est bien déroulée";
                 header("Location: users.php");
                 exit;
-            }
-            else {
-                $alertMessage = "Erreur updating record : " . $connection->error;
+            } else {
+                $alertMessage = "Erreur lors de la mise à jour : " . $connection->error;
                 $errorOccured = true;
             }
 
@@ -108,74 +118,76 @@ if ($_SESSION["connexion"] == true) {
         <h1 class="text-center">Modifier usager</h1>
         <hr>
 
-        <?php 
-            if ($_SERVER['REQUEST_METHOD'] != 'POST' || $errorOccured == true) {
+        <?php
+        if ($_SERVER['REQUEST_METHOD'] != 'POST' || $errorOccured == true) {
 
-                $servername = "localhost";
-                $username = "root";
-                $password = "root";
-                $db = "event_feedback";
-            
-                $connection = new mysqli($servername, $username, $password, $db);
-            
-                if ($connection->connect_error) {
-                    die("Connection failed: " . $connection->connect_error);
-                }
-            
-                $eventId = isset($_GET["id"]) ? $_GET["id"] : $_POST["hiddenId"];
-                $selectAllQuery = "SELECT * FROM users WHERE id=" . $eventId;
-                $result = $connection->query($selectAllQuery);
-                if ($result->num_rows <= 0) {
-                    echo "0 results";
-                }
-            
-                while($row = $result->fetch_assoc()) {
-                    $valuesInputed = array(
-                        "prenom" => $row["prenom"],
-                        "email" => $row["email"],
-                        "password" => $row["password"],
-                    );
-                }
-                $errorOccured = false;
-                $alertMessage = '';
+            $servername = "localhost";
+            $username = "root";
+            $password = "root";
+            $db = "event_feedback";
+
+            $connection = new mysqli($servername, $username, $password, $db);
+
+            if ($connection->connect_error) {
+                die("Connection failed: " . $connection->connect_error);
+            }
+
+            $eventId = isset($_GET["id"]) ? $_GET["id"] : $_POST["hiddenId"];
+            $selectAllQuery = "SELECT * FROM users WHERE id=" . $eventId;
+            $result = $connection->query($selectAllQuery);
+            if ($result->num_rows <= 0) {
+                echo "0 results";
+            }
+
+            while ($row = $result->fetch_assoc()) {
+                $valuesInputed = array(
+                    "prenom" => $row["prenom"],
+                    "email" => $row["email"],
+                    "password" => $row["password"],
+                );
+            }
+            $errorOccured = false;
+            $alertMessage = '';
         ?>
-                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" class="">
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="">
 
-                    <input type="text" class="form-control mb-3" name="prenom" id="prenom" placeholder="Prénom" 
-                    value="<?php echo $valuesInputed['prenom']; ?>">
+                <label for="prenom" class="label">Prénom</label>
+                <input type="text" class="form-control mb-3" name="prenom" id="prenom" value="<?php echo $valuesInputed['prenom']; ?>">
 
-                    <input type="text" class="form-control mb-3" name="email" id="email" placeholder="email" 
-                    value="<?php echo $valuesInputed['email']; ?>">
+                <label for="email" class="label">Email</label>
+                <input type="text" class="form-control mb-3" name="email" id="email" value="<?php echo $valuesInputed['email']; ?>">
 
-                    <input type="password" class="form-control mb-3" name="mdp" id="mdp" placeholder="Nouveau mot de passe">
+                <label for="mdp" class="label">Nouveau mot de passe</label>
+                <input type="password" class="form-control mb-3" name="mdp" id="mdp">
 
-                    <input type="hidden" id="hiddenId" name="hiddenId" value="<?php echo $eventId;?>">
+                <input type="hidden" id="hiddenId" name="hiddenId" value="<?php echo $eventId; ?>">
 
-                    <p class="text-<?php echo $errorOccured == true ? "danger" : "success" ?>">
-                        <?php echo $alertMessage; ?>
-                    </p>
+                <p class="text-<?php echo $errorOccured == true ? "danger" : "success" ?>">
+                    <?php echo $alertMessage; ?>
+                </p>
 
-                    <div class="row">
-                        <div class="col-6">
-                            <a href="users.php?id=<?php echo $eventId; ?>">
-                                <button type="button" class="btn btn-outline-danger w-100">Annuler</button>
-                            </a>
-                        </div>
-                        <div class="col-6">
-                            <button type="submit" class="btn btn-primary w-100">Modifier</button>
-                        </div>
+                <div class="row">
+                    <div class="col-6">
+                        <a href="users.php?id=<?php echo $eventId; ?>">
+                            <button type="button" class="btn btn-outline-danger w-100">Annuler</button>
+                        </a>
                     </div>
-                </form>
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-primary w-100">Modifier</button>
+                    </div>
+                </div>
+            </form>
         <?php } ?>
     </div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
-<?php 
-}
-else {
+
+<?php
+} else {
     header("Location: login.php");
     exit;
 }
 ?>
+
 </html>
