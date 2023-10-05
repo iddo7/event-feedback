@@ -1,7 +1,6 @@
 <?php
 session_start();
 ?>
-<?php include 'navbar.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -224,7 +223,7 @@ if ($_SESSION["connexion"] == true) {
                             </a>
                         </div>
                         <div class="col-6">
-                            <button type="submit" class="btn btn-primary w-100">Modifier</button>
+                            <button type="submit" class="btn btn-primary w-100">Sauvegarder</button>
                         </div>
                     </div>
                 </form>

@@ -1,7 +1,6 @@
 <?php
 session_start();
 ?>
-<?php include 'navbar.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -126,7 +125,16 @@ if ($_SESSION["connexion"] == true) {
                     <?php echo $alertMessage; ?>
                 </p>
 
-                <button type="submit" class="btn btn-primary w-100">Suivant</button>
+                <div class="row">
+                    <div class="col-6">
+                        <a href="events.php">
+                            <button type="button" class="btn btn-outline-danger w-100">Annuler</button>
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-primary w-100">Créer</button>
+                    </div>
+                </div>
             </form>
         <?php } } else {
             header("Location: login.php");
