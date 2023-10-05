@@ -1,7 +1,9 @@
 <?php
 session_start();
 ?>
-<?php include 'navbar.php'; ?>
+<?php 
+include 'navbar.php'; 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +19,7 @@ session_start();
 <body>
 <?php 
 if ($_SESSION["connexion"] == true) {
-
+    
     if ($_SERVER['REQUEST_METHOD'] != 'POST' || $errorOccured == true) {
 
         $servername = "localhost";
@@ -62,7 +64,7 @@ if ($_SESSION["connexion"] == true) {
 ?>
 <div class="container-fluid p-0 mb-4">
     <div class="p-5 bg-darker">
-        <div class="row mb-3 event-info-details">
+        <div class="row event-info-details">
             <div class="col-4 event-img" style="background: url('<?php echo $valuesInputed["img"] ?>')"></div>
             <div class="col-8 ps-4">
                 <div class="row mb-2 d-flex ajust-items-center">
@@ -154,6 +156,10 @@ if ($_SESSION["connexion"] == true) {
   google.charts.setOnLoadCallback(drawStudentChart);
   google.charts.setOnLoadCallback(drawProfessionalChart);
 
+  let green = '#1a9f6b'
+  let yellow = '#ffc45d'
+  let red = '#d72a54'
+
     // Student Chart
     function drawStudentChart() {
         var data = google.visualization.arrayToDataTable([
@@ -166,7 +172,7 @@ if ($_SESSION["connexion"] == true) {
             chart: {
                 subtitle: 'Expérience des étudiants',
             },
-            colors: ['#df2350', '#ffc45d', '#008a64']
+            colors: [red, yellow, green]
         };
 
         var chart = new google.charts.Bar(document.getElementById('student-chart'));
@@ -185,7 +191,7 @@ if ($_SESSION["connexion"] == true) {
             chart: {
                 subtitle: 'Expérience des professionels',
             },
-            colors: ['#df2350', '#ffc45d', '#008a64']
+            colors: [red, yellow, green]
         };
 
         var chart = new google.charts.Bar(document.getElementById('professional-chart'));
