@@ -4,6 +4,7 @@ include 'navbar.php';
 ?>
 <?php include 'variables-db.php'; ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -119,10 +120,6 @@ if ($_SESSION["connexion"] == true) {
         <?php
         if ($_SERVER['REQUEST_METHOD'] != 'POST' || $errorOccured == true) {
 
-            $servername = "localhost";
-            $username = "root";
-            $password = "root";
-            $db = "event_feedback";
 
             $connection = new mysqli($servername, $username, $password, $db);
 
