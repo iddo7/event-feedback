@@ -19,7 +19,7 @@ if ($_SESSION["connexion"] == true) {
     
 ?>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-darker ps-5">
+<nav class="navbar navbar-expand-lg navbar-light ps-5">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
