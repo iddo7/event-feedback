@@ -2,6 +2,8 @@
 session_start();
 ?>
 <?php include 'navbar.php'; ?>
+<?php include 'variables-db.php'; ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -66,10 +68,6 @@ if ($_SESSION["connexion"] == true) {
         }
 
         if (!$errorOccured) {
-            $servername = "localhost";
-            $username = "root";
-            $password = "root";
-            $db = "event_feedback";
         
             // Create connection
             $connection = mysqli_connect($servername, $username, $password, $db);
@@ -111,6 +109,37 @@ if ($_SESSION["connexion"] == true) {
         <h1 class="text-center">Modifier évènement</h1>
         <hr>
 
+        <?php
+        if ($_SERVER['REQUEST_METHOD'] != 'POST' || $errorOccured == true) {
+
+
+            $connection = new mysqli($servername, $username, $password, $db);
+
+            if ($connection->connect_error) {
+                die("Connection failed: " . $connection->connect_error);
+            }
+            $connection->query('SET NAMES utf8');
+
+            $eventId = isset($_GET["id"]) ? $_GET["id"] : $_POST["hiddenId"];
+            $selectAllQuery = "SELECT * FROM events WHERE id=" . $eventId;
+            $result = $connection->query($selectAllQuery);
+            if ($result->num_rows <= 0) {
+                echo "0 results";
+            }
+
+            while ($row = $result->fetch_assoc()) {
+                $valuesInputed = array(
+                    "name" => $row["name"],
+                    "description" => $row["description"],
+                    "date" => $row["date"],
+                    "img" => $row["img"],
+                    "departementId" => $row["departementId"],
+                    "place" => $row["place"],
+                );
+            }
+            $errorOccured = false;
+            $alertMessage = '';
+          
         <?php 
             if ($_SERVER['REQUEST_METHOD'] != 'POST' || $errorOccured == true) {
 

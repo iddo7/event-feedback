@@ -2,6 +2,8 @@
 session_start();
 ?>
 <?php include 'navbar.php'; ?>
+<?php include 'variables-db.php'; ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -82,13 +84,9 @@ if ($_SESSION["connexion"] == true) {
 
         if (!$errorOccured) {
 
-            $servername = "localhost";
-            $usernameDB = "root";
-            $passwordDB = "root";
-            $db = "event_feedback";
 
 
-            $conn = mysqli_connect($servername, $usernameDB, $passwordDB, $db);
+            $conn = mysqli_connect($servername, $username, $password, $db);
 
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());

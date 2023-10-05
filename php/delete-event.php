@@ -1,4 +1,7 @@
 <?php session_start(); ?>
+<?php include 'variables-db.php'; ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,10 +13,7 @@
 <?php 
 if ($_SESSION["connexion"] == true) {
 
-    $servername = 'localhost';
-    $username = 'root';
-    $password = 'root';
-    $db = 'event_feedback';
+
 
 
     // Create connection

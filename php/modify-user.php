@@ -2,6 +2,7 @@
 session_start();
 include 'navbar.php';
 ?>
+<?php include 'variables-db.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +61,7 @@ if ($_SESSION["connexion"] == true) {
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        $inputs = array("prenom", "email", "mdp");
+        $inputs = array("prenom", "email");
 
         if (anyIsEmpty($inputs)) {
             $errorOccured = true;
@@ -72,15 +73,13 @@ if ($_SESSION["connexion"] == true) {
             $valuesInputed[$keys[$i]] = trojan($_POST[$inputs[$i]]);
         }
 
+        // Separate the password update logic
+        $newPassword = "";
         if (!empty($_POST['mdp'])) {
-            $valuesInputed['mdp'] = md5($_POST['mdp']);
+            $newPassword = ", password='" . md5($_POST['mdp']) . "'";
         }
 
         if (!$errorOccured) {
-            $servername = "localhost";
-            $username = "root";
-            $password = "root";
-            $db = "event_feedback";
 
             $connection = mysqli_connect($servername, $username, $password, $db);
 
@@ -91,13 +90,8 @@ if ($_SESSION["connexion"] == true) {
 
             $prenom = $valuesInputed['prenom'];
             $email = $valuesInputed['email'];
-            $mdp = $valuesInputed['mdp'];
 
-            $updateQuery = "UPDATE users SET prenom='{$prenom}', email='{$email}'";
-            if (!empty($_POST['mdp'])) {
-                $updateQuery .= ", password='{$mdp}'";
-            }
-            $updateQuery .= " WHERE id={$eventId}";
+            $updateQuery = "UPDATE users SET prenom='{$prenom}', email='{$email}'{$newPassword} WHERE id={$eventId}";
 
             if ($connection->query($updateQuery) === TRUE) {
                 $alertMessage = "La mise à jour s'est bien déroulée";
@@ -121,10 +115,6 @@ if ($_SESSION["connexion"] == true) {
         <?php
         if ($_SERVER['REQUEST_METHOD'] != 'POST' || $errorOccured == true) {
 
-            $servername = "localhost";
-            $username = "root";
-            $password = "root";
-            $db = "event_feedback";
 
             $connection = new mysqli($servername, $username, $password, $db);
 

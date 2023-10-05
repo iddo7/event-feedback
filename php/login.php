@@ -1,6 +1,8 @@
 <?php
 session_start();
 ?>
+<?php include 'variables-db.php'; ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,23 +53,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if (!$errorOccured) {
-        $username = $_POST['username'];
-        $password = md5($_POST['password'], false);            
+        $usernameLogin = $_POST['username'];
+        $passwordLogin = md5($_POST['password'], false);            
 
-        $servername = "localhost";
-        $usernameDB = "root";
-        $passwordDB = "root";
-        $db = "event_feedback";
 
         // Create connection
-        $connection = new mysqli($servername, $usernameDB, $passwordDB, $db);
+        $connection = new mysqli($servername, $username, $password, $db);
         // Check connection
         if ($connection->connect_error) {
             die("Connection failed: " . $connection->connect_error);
         }
         $connection->query('SET NAMES utf8');
 
-        $selectUserQuery = "SELECT * FROM users WHERE email='$username' AND password='$password'";
+        $selectUserQuery = "SELECT * FROM users WHERE email='$usernameLogin' AND password='$passwordLogin'";
         $result = $connection->query($selectUserQuery);
 
         if (!empty($result)) {

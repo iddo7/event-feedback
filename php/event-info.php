@@ -4,6 +4,8 @@ session_start();
 <?php 
 include 'navbar.php'; 
 ?>
+<?php include 'variables-db.php'; ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,10 +24,6 @@ if ($_SESSION["connexion"] == true) {
     
     if ($_SERVER['REQUEST_METHOD'] != 'POST' || $errorOccured == true) {
 
-        $servername = "localhost";
-        $username = "root";
-        $password = "root";
-        $db = "event_feedback";
     
         // Create connection
         $connection = new mysqli($servername, $username, $password, $db);

@@ -1,6 +1,8 @@
 <?php
 session_start();
 ?>
+<?php include 'variables-db.php'; ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,10 +31,7 @@ if ($_SESSION["connexion"] == true) {
     $voteType = $_GET["type"];
     $feedback = $_GET["feedback"];
 
-    $servername = 'localhost';
-    $username = 'root';
-    $password = 'root';
-    $db = 'event_feedback';
+
 
     // Create connection
     $connection = new mysqli($servername, $username, $password, $db);
