@@ -138,7 +138,7 @@ if ($_SESSION["connexion"] == true) {
 <div class="container mb-5">
     <div class="row d-flex justify-content-center">
         <div class="col-2">
-            <a href="modify-event.php?id=<?php echo $eventId ?>" class="w-100">
+            <a href="modify-event.php?id=<?php echo $eventId ?>&previousPage=eventInfo" class="w-100">
                 <button class="btn btn-outline-primary vote-btn w-100">Modifier</button>
             </a>
         </div>
