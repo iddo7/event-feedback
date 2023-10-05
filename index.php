@@ -19,26 +19,20 @@ if ($_SESSION["connexion"] == true) {
     
 ?>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+<nav class="navbar navbar-expand-lg navbar-light ps-5">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+    <a class="navbar-brand" href="../index.php">Event Feedback</a>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="index.php">Accueil <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="index.php">Accueil</span></a>
             <a class="nav-item nav-link" href="php/events.php">Évènements</a>
             <a class="nav-item nav-link" href="php/users.php">Usagers</a>
             <a class="nav-item nav-link" href="php/logout.php">Se déconnecter</a>
         </div>
     </div>
 </nav>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 text-center mt-5">
-                <span class="logo">Event Feedback</span>
-            </div>
-        </div>
-    </div>
     <div class="container screen-center">
         <div class="row mb-5">
             <div class="col-12 text-center">

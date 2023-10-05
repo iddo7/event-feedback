@@ -97,14 +97,7 @@ if ($_SESSION["connexion"] == true) {
     }
 ?>
 
-<body >
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 text-center mt-5">
-                <span class="logo">event-feedback</span>
-            </div>
-        </div>
-    </div>
+<body>
     <div class="p-4 screen-center col-12 col-md-6 col-xl-3">
         <h1 class="text-center">Créer utilisateur</h1>
         <hr>
@@ -126,7 +119,16 @@ if ($_SESSION["connexion"] == true) {
                     <?php echo $alertMessage; ?>
                 </p>
 
-                <button type="submit" class="btn btn-primary w-100">Suivant</button>
+                <div class="row">
+                    <div class="col-6">
+                        <a href="events.php">
+                            <button type="button" class="btn btn-outline-danger w-100">Annuler</button>
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-primary w-100">Créer</button>
+                    </div>
+                </div>
             </form>
         <?php } } else {
             header("Location: login.php");
