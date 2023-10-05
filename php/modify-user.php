@@ -2,6 +2,7 @@
 session_start();
 include 'navbar.php';
 ?>
+<?php include 'variables-db.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -77,10 +78,7 @@ if ($_SESSION["connexion"] == true) {
         }
 
         if (!$errorOccured) {
-            $servername = "localhost";
-            $username = "root";
-            $password = "root";
-            $db = "event_feedback";
+
 
             $connection = mysqli_connect($servername, $username, $password, $db);
 

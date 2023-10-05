@@ -2,6 +2,8 @@
 session_start();
 ?>
 <?php include 'navbar.php'; ?>
+<?php include 'variables-db.php'; ?>
+
 
 
 <!DOCTYPE html>
@@ -18,10 +20,7 @@ session_start();
 
 <?php 
 if ($_SESSION["connexion"] == true) {
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-    $db = "event_feedback";
+
 
     $connection = new mysqli($servername, $username, $password, $db);
 
