@@ -85,13 +85,6 @@ if ($_SESSION["connexion"] == true) {
     }
 ?>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 text-center mt-5">
-                <span class="logo">Event Feedback</span>
-            </div>
-        </div>
-    </div>
     <div class="container screen-center">
         <div class="row mb-5">
             <div class="col-12 text-center">

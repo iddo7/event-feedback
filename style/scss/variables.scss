@@ -1,22 +1,21 @@
 // Modifying Bootstrap's default colors
 // sass --watch style/scss/variables.scss:style/scss/compiled-variables.css
 
-
-$blue: #1a6eec;
-$grey: #a9aabc;
-$dark-purple: #444655;
-$green: #008a64;
+$purple: #5a5cd7;
+$dark-purple: #484554;
+$green: #1a9f6b;
 $yellow: #ffc45d;
-$red: #df2350;
-$white-smoke : #e7e7e7;
+$red: #d72a54;
+$light-grey: #e7e7e7;
+$white: #ffffff;
 
-$primary: $blue;
-$secondary: $grey;
+$primary: $purple;
+$secondary: $white;
 $dark: $dark-purple;
 $success: $green;
 $warning: $yellow;
 $danger: $red;
-$background: $white-smoke;
+$background: $light-grey;
 
 
 
@@ -52,4 +51,3 @@ h2 {font-size: 1.5rem;}
 h3 {font-size: 1.15rem;}
 
 small, .text_small {font-size: 0.833rem;}
-

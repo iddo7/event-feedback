@@ -112,13 +112,6 @@ if ($_SESSION["connexion"] == true) {
 ?>
 
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 text-center mt-5">
-                <span class="logo">Event Feedback</span>
-            </div>
-        </div>
-    </div>
     <div class="p-4 screen-center col-12 col-md-6 col-xl-4">
         <h1 class="text-center">Modifier évènement</h1>
         <hr>
@@ -225,6 +218,29 @@ if ($_SESSION["connexion"] == true) {
                         <a href="event-info.php?id=<?php echo $eventId; ?>">
                             <button type="button" class="btn btn-outline-danger w-100">Annuler</button>
                         </a>
+                        // Close the database connection
+                        mysqli_close($conn);
+                        ?>
+                    </select>
+
+                    <textarea class="form-control mb-3" name="description" id="description" 
+                    placeholder="Description" rows="4" style="max-height: 200px;" maxlength="500"><?php echo $valuesInputed['description']; ?></textarea>
+
+                    <input type="hidden" id="hiddenId" name="hiddenId" value="<?php echo $eventId;?>">
+
+                    <p class="text-<?php echo $errorOccured == true ? "danger" : "success" ?>">
+                        <?php echo $alertMessage; ?>
+                    </p>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <a href="event-info.php?id=<?php echo $eventId; ?>">
+                                <button type="button" class="btn btn-outline-danger w-100">Annuler</button>
+                            </a>
+                        </div>
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-primary w-100">Sauvegarder</button>
+                        </div>
                     </div>
                     <div class="col-6">
                         <button type="submit" class="btn btn-primary w-100">Modifier</button>

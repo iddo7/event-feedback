@@ -111,13 +111,6 @@ if ($_SESSION["connexion"] == true) {
 ?>
 
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 text-center mt-5">
-                <span class="logo">Event Feedback</span>
-            </div>
-        </div>
-    </div>
     <div class="p-4 screen-center col-12 col-md-6 col-xl-4">
         <h1 class="text-center">Ajouter évènement</h1>
         <hr>
