@@ -139,44 +139,8 @@ if ($_SESSION["connexion"] == true) {
             }
             $errorOccured = false;
             $alertMessage = '';
-          
-        <?php 
-            if ($_SERVER['REQUEST_METHOD'] != 'POST' || $errorOccured == true) {
+            ?>
 
-                $servername = "localhost";
-                $username = "root";
-                $password = "root";
-                $db = "event_feedback";
-            
-                // Create connection
-                $connection = new mysqli($servername, $username, $password, $db);
-            
-                // Check connection
-                if ($connection->connect_error) {
-                    die("Connection failed: " . $connection->connect_error);
-                }
-                $connection->query('SET NAMES utf8');
-            
-                $eventId = isset($_GET["id"]) ? $_GET["id"] : $_POST["hiddenId"];
-                $selectAllQuery = "SELECT * FROM events WHERE id=" . $eventId;
-                $result = $connection->query($selectAllQuery);
-                if ($result->num_rows <= 0) {
-                    echo "0 results";
-                }
-            
-                while($row = $result->fetch_assoc()) {
-                    $valuesInputed = array(
-                        "name" => $row["name"],
-                        "description" => $row["description"],
-                        "date" => $row["date"],
-                        "img" => $row["img"],
-                        "departementId" => $row["departementId"],
-                        "place" => $row["place"], // Récupération de la valeur de "place"
-                    );
-                }
-                $errorOccured = false;
-                $alertMessage = '';
-        ?>
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" class="">
 
                     <div class="row">
