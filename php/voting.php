@@ -45,7 +45,7 @@ if ($_SESSION["connexion"] == true) {
 <h1 id="thanks-message" class="message text-center">Merci pour votre vote</h1>
 
 <div class="m-5 fleche-retour">
-    <a class="back-btn" href="event-info.php?id=<?php echo $eventId ?>">
+    <a class="back-btn" href="logout.php">
         <i class="fa-sharp fa-solid fa-arrow-left"></i>
     </a>
 </div>
